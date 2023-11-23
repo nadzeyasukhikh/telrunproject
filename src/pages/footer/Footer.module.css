@@ -1,0 +1,51 @@
+.title{
+    color: #282828;
+    font-size: 64px;
+    font-weight: 700;
+    padding-left: 40px;
+    padding-top: 80px;
+    padding-bottom: 40px;
+}
+
+.divInfo{
+    display: flex;
+    justify-content: space-between;
+    padding-left: 40px;
+    
+}
+
+.infoText{
+    display: flex;
+padding: 32px;
+flex-direction: column;
+align-items: flex-start;
+gap: 16px;
+border-radius: 12px;
+background: #F1F3F4;
+margin-bottom: 32px;
+
+}
+.paragraphText{
+    color: #8B8B8B;
+    font-size: 20px;
+    font-weight: 500;
+}
+.paragraphInfo{
+    color: #282828;
+    font-size: 40px;
+    width: 716px;
+    font-weight: 600;
+}
+.footerImg{
+    display: flex;
+    gap: 16px;
+}
+.footerMap{
+    border-radius: 12px;
+    width: 100%;
+    height: 350px;
+    
+}
+.footerMapStyle{
+    padding: 0 40px 80px 40px;
+}

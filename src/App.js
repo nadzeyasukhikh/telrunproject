@@ -1,12 +1,21 @@
 
 import './App.css';
+import Footer from './pages/footer/Footer';
+
+import Nav from './pages/nav/Nav';
+
+
+
 
 function App() {
+  
+
   return (
-    <div >
-      
-    </div>
+    <>
+     <Nav />
+     
+    <Footer /> 
+  </>
   );
 }
-
 export default App;

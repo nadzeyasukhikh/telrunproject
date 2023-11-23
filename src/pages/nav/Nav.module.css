@@ -1,0 +1,37 @@
+.nav{
+    display: flex;
+    justify-content: space-between;
+    padding: 30px 40px;
+}
+.link{
+    display: flex;
+    gap: 32px;
+    margin-top: 10px;
+}
+.linkstyle{
+    text-decoration: none;
+    color: #282828;
+}
+.image{
+    width: 70px;
+    height: 70px;
+}
+.btn{
+    border: none;
+    
+}
+.btnImg{
+    width: 48px;
+    height: 48px;
+    position: relative;
+}
+.count{
+    position: absolute;
+    width: 26px;
+    height: 26px;
+    background-color: green;
+    border-radius: 50%;
+    top: 35px;
+   padding: 4px;
+   color: white;
+}
