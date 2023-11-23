@@ -1,4 +1,4 @@
-.title{
+.title {
     color: #282828;
     font-size: 64px;
     font-weight: 700;
@@ -7,45 +7,59 @@
     padding-bottom: 40px;
 }
 
-.divInfo{
-    display: flex;
-    justify-content: space-between;
+.divInfo {
+
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
     padding-left: 40px;
-    
+
 }
 
-.infoText{
+.infoText {
     display: flex;
-padding: 32px;
-flex-direction: column;
-align-items: flex-start;
-gap: 16px;
-border-radius: 12px;
-background: #F1F3F4;
-margin-bottom: 32px;
+    padding: 32px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+    border-radius: 12px;
+    background: #F1F3F4;
+    margin-bottom: 32px;
 
 }
-.paragraphText{
+
+.paragraphText {
     color: #8B8B8B;
     font-size: 20px;
     font-weight: 500;
 }
-.paragraphInfo{
+
+.paragraphInfo {
     color: #282828;
     font-size: 40px;
     width: 716px;
     font-weight: 600;
 }
-.footerImg{
+.paragraphInfoInfo{
+    color: #282828;
+    font-size: 40px;
+    width: 716px;
+    font-weight: 600;
+    padding-bottom: 53px;
+}
+
+.footerImg {
     display: flex;
     gap: 16px;
 }
-.footerMap{
+
+.footerMap {
     border-radius: 12px;
     width: 100%;
     height: 350px;
-    
+
 }
-.footerMapStyle{
+
+.footerMapStyle {
     padding: 0 40px 80px 40px;
 }

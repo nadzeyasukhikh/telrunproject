@@ -1,0 +1,58 @@
+.mainTitle{
+    color: #FFF;
+    font-size: 96px;
+    padding: 80px 40px 0 40px;
+    width: 1360px;
+    font-weight: 700;
+}
+.mainBtn{
+    margin: 40px 0 210px 40px;
+    padding: 16px 56px;
+    background: #393;
+    border: none;
+    border-radius: 6px;
+    color: #FFF;
+    font-size: 20px;
+    font-weight: 600;
+    cursor: pointer;
+}
+.categoriesDiv{
+    display: flex;
+    justify-content: space-between;
+    padding: 80px 40px 40px 40px;
+}
+.categoriesTitle{
+    color: #282828;
+    font-size: 64px;
+    font-weight: 700;
+}
+.categoriesBtn{
+    height: 36px;
+    padding: 8px 16px;
+    border-radius:  6px;
+border: 1px solid  #DDD;
+color: #8B8B8B;
+font-size: 16px;
+cursor: pointer;
+}
+.categoriesImg{
+    width: 316px;
+    height: 350px;
+    background-repeat: no-repeat;
+    padding-top: 20px;
+    margin-left: 70px;
+}
+.swipperDiv{
+   
+    padding-left: 25%;
+    padding-right: 25%;
+    padding-top: 40px;
+    cursor: pointer;
+    
+}
+.swipperTitle{
+    color: #282828;
+   padding: 15px;
+   font-size: 20px;
+   text-align: center;
+}

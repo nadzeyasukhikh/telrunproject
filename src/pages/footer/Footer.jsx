@@ -28,7 +28,7 @@ function Footer() {
           </div>
           <div className={styles.infoText}>
             <p className={styles.paragraphText}>Working Hours</p>
-            <p className={styles.paragraphInfo}>24 hours a day</p>
+            <p className={styles.paragraphInfoInfo}>24 hours a day</p>
           </div>
           <div></div>
         </div>
