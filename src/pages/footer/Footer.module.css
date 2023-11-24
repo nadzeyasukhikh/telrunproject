@@ -57,9 +57,10 @@
     border-radius: 12px;
     width: 100%;
     height: 350px;
-
+    border: none;
 }
 
 .footerMapStyle {
     padding: 0 40px 80px 40px;
+    
 }
