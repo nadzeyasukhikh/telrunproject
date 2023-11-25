@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import mainBack from "./images/mainBack.svg"
+import mainBack from "../../assets/images/mainBack.svg"
 import styles from "./MainPage.module.css"
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
@@ -12,6 +12,7 @@ import 'swiper/css/pagination';
 
 
 import { EffectCoverflow, Pagination } from 'swiper/modules';
+import DiscountForm from "../../components/DiscountForm";
 
 function MainPage(){
     const dispatch = useDispatch();
@@ -65,6 +66,7 @@ function MainPage(){
                 ))}
             </Swiper>
         </div>
+        <DiscountForm />
         </>
     )
 }

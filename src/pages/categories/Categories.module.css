@@ -5,12 +5,23 @@
 }
 .categoriesImg{
     width: 316px;
+    height: 350px;
+    border-radius: 12px;
+    transition: 0.5s;
+    cursor: pointer;
+}
+.categoriesImg:hover{
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.4), 0 6px 20px 0 rgba(0, 0, 0, 0.33);
 }
 .categoriesDivImg{
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 32px;
     padding-left: 20%;
+    padding-right: 20%;
+    padding-top: 40px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: auto auto auto; 
+    gap: 40px;
+    
 }
 
 .categoriesBtn{
@@ -20,4 +31,20 @@ border: 1px solid #DDD;
 color: #282828;
 cursor: pointer;
 margin-left: 16px;
+}
+.categoriesTitle{
+    padding-top: 40px;
+    color: #282828;
+    font-size: 64px;
+    
+}
+.categoriInfo{
+    padding-top: 16px;
+    color: #282828;
+    font-size: 20px;
+    
+}
+.imgPDiv{
+text-align: center;
+align-items: center;
 }

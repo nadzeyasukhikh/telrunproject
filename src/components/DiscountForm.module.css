@@ -1,0 +1,56 @@
+.discDiv {
+    background: linear-gradient(261deg, #0B710B 32.63%, #393 98.96%);
+    margin: 80px 40px 0 40px;
+    border-radius: 12px;
+    text-align: center;
+}
+
+.title {
+    padding-top: 32px;
+    color: #fff;
+    font-size: 64px;
+    font-weight: 700;
+}
+
+.form {
+    text-align: start;
+    padding-top: 32px;
+width: 100%;
+margin-left: 20%;
+
+}
+
+.form input {
+    width: 80%;
+    padding: 16px 32px;
+    border-radius: 6px;
+    border: 1px solid #FFF;
+    background: linear-gradient(261deg, #0B710B 32.63%, #393 98.96%);
+    margin-bottom: 16px;
+    color: #fff;
+    font-size: 20px;
+    outline: none;
+}
+.form input::placeholder {
+    color: #fff; 
+    opacity: 1;
+}
+
+.imgForm {
+    display: flex;
+    justify-content: space-between;
+    padding: 24px 32px 0 32px;
+
+}
+.discountBtn{
+    margin-top: 32px;
+    width: 80%;
+    padding: 16px 32px;
+    align-items: center;
+    border-radius:  6px;
+background: #FFF;
+color: #282828;
+border: none;
+font-size: 20px;
+
+}

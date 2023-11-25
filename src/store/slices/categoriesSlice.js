@@ -3,10 +3,14 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
 export const fetchCategories = createAsyncThunk(
     "categories/fetchCategories",
-    async () => {
+    async (_, {rejectWithValue}) => {
+       try{
         const response = await fetch("http://localhost:3333/categories/all")
         const data = await response.json();
         return data
+       }catch (error){
+        return rejectWithValue(error)
+       }
     }
 );
 const categoriesSlice = createSlice({

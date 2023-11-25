@@ -1,6 +1,6 @@
 import styles from "./Footer.module.css";
-import inst from "./images/ic-instagram.svg";
-import whatsapp from "./images/ic-whatsapp.svg";
+import inst from "../../assets/images/ic-instagram.svg";
+import whatsapp from "../../assets/images/ic-whatsapp.svg";
 function Footer() {
   return (
     <div>

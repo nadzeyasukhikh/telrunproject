@@ -24,7 +24,7 @@ function Categories(){
             <h2 className={styles.categoriesTitle}>Categories</h2>
             <div className={styles.categoriesDivImg} >
             {categories.map(category => (
-                <div key={category.id}>
+                <div className={styles.imgPDiv} key={category.id}>
                     <img className={styles.categoriesImg} src={`http://localhost:3333${category.image}`} alt={category.title}/>
                     <p className={styles.categoriInfo}>{category.title}</p>
                 </div>
