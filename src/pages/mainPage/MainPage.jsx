@@ -47,7 +47,8 @@ function MainPage(){
            grabCursor={true}
            centeredSlides={true}
            slidesPerView={2}
-           spaceBetween={20} 
+           spaceBetween={20}
+           loop={true} 
         coverflowEffect={{
           rotate: 50,
           stretch: 0,

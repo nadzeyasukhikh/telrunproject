@@ -15,18 +15,67 @@ function DiscountForm(){
         email: "",
     })
 
+    const [formErrors, setFormErrors] = useState({});
+
     const handleChange = (event) => {
         const { name, value } = event.target;
         setFormData(old => ({
             ...old,
             [name]: value
         }));
+        if (name === "name" || name === "phone"){
+        const newError = validateField(name, value);
+        setFormErrors(oldErrors => ({
+            ...oldErrors,
+            [name]: newError
+        }));
+    }
     };
+
+    const validateField = (name, value) => {
+        switch (name) {
+            case 'name':
+                if (!/^[ZA-Za-z]+$/.test(value)) {
+                    return "Name must be in English letters only";
+                }
+                break;
+            case 'phone':
+                if (!/^\+\d+$/.test(value)) {
+                    return "Phone number must start with '+' and include digits";
+                }
+                break;
+            case 'email':
+                if (!/\S+@\S+\.\S+/.test(value)) {
+                    return "Email must be a valid email address";
+                }
+                break;
+            default:
+                return '';
+        }
+    };
+
+    const handleBlur = (event) => {
+        const { name, value } = event.target;
+        const newError = validateField(name, value);
+        setFormErrors(oldErrors => ({
+            ...oldErrors,
+            [name]: newError
+        }));
+    };
+
+
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        dispatch(sendSaleData(formData));
+        const errors = validateField();
+        if(Object.keys(errors).length === 0){
+            dispatch(sendSaleData(formData));
         setFormData({ name: "", phone: "", email: "" });
+        setFormErrors({});
+        } else {
+            setFormErrors(errors)
+        }
+        
 
     }
 
@@ -49,21 +98,32 @@ function DiscountForm(){
                     placeholder="Name"
                     value={formData.name}
                     onChange={handleChange}
-                /><br></br>
+                    className={formErrors.name ? styles.inputError : ''}
+                />
+                {formErrors.name && <p className={`${styles.error} ${styles.errorName}`}>{formErrors.name}</p>}
+                <br></br>
                 <input
                     type="text"
                     name="phone"
                     placeholder="Phone number"
                     value={formData.phone}
                     onChange={handleChange}
-                /><br></br>
+                     onBlur={handleBlur}
+                    className={formErrors.phone ? styles.inputError : ''}
+                />
+                {formErrors.phone && <p className={`${styles.error} ${styles.errorPhone}`}>{formErrors.phone}</p>}
+                <br></br>
                 <input
                     type="text"
                     name="email"
                     placeholder="Email"
                     value={formData.email}
                     onChange={handleChange}
-                /><br></br>
+                    onBlur={handleBlur}
+                    className={formErrors.email ? styles.inputError : ''}
+                />
+                {formErrors.email && <p className={`${styles.error} ${styles.errorEmail}`}>{formErrors.email}</p>}
+                <br></br>
                 <button className={styles.discountBtn}>Get a discount</button>
             </form>
         </div>
