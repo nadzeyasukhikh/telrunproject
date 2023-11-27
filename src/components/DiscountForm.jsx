@@ -33,9 +33,12 @@ function DiscountForm(){
     };
 
     const validateField = (name, value) => {
+        if (!value || value.trim() === '') {
+            return 'This field is required';
+        }
         switch (name) {
             case 'name':
-                if (!/^[ZA-Za-z]+$/.test(value)) {
+                if (!/^[A-Za-z]+$/.test(value)) {
                     return "Name must be in English letters only";
                 }
                 break;
@@ -45,8 +48,8 @@ function DiscountForm(){
                 }
                 break;
             case 'email':
-                if (!/\S+@\S+\.\S+/.test(value)) {
-                    return "Email must be a valid email address";
+                if (!value.includes('@')) {
+                    return "Email must contain '@'";
                 }
                 break;
             default:
@@ -67,7 +70,14 @@ function DiscountForm(){
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        const errors = validateField();
+        const errors = Object.keys(formData).reduce((acc, fieldName) => {
+            const fieldValue = formData[fieldName];
+            const error = validateField(fieldName, fieldValue);
+            if (error) {
+                acc[fieldName] = error;
+            }
+            return acc;
+        }, {});
         if(Object.keys(errors).length === 0){
             dispatch(sendSaleData(formData));
         setFormData({ name: "", phone: "", email: "" });
