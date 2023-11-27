@@ -55,6 +55,7 @@ cursor: pointer;
    padding: 15px;
    font-size: 20px;
    text-align: center;
+   font-weight: 600;
 }
 
 @media (max-width: 400px) {

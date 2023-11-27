@@ -23,6 +23,11 @@
     gap: 40px;
     
 }
+.loading{
+    color: #282828;
+    font-size: 20px;
+    font-weight: 600;
+}
 
 .categoriesBtn{
     padding: 8px 16px;
@@ -42,7 +47,7 @@ margin-left: 16px;
     padding-top: 16px;
     color: #282828;
     font-size: 20px;
-    
+    font-weight: 600;
 }
 .imgPDiv{
 text-align: center;

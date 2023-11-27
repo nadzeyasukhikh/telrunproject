@@ -23,7 +23,8 @@ function Categories(){
             <button className={styles.categoriesBtn} onClick={() => {navigateCategories("/categories")}}>Categories</button>
             <h2 className={styles.categoriesTitle}>Categories</h2>
             <div className={styles.categoriesDivImg} >
-            {categories.map(category => (
+            {status === 'loading' && <p className={styles.loading}>Loading...</p>}
+            {status === 'succeeded' && categories.map(category => (
                 <div className={styles.imgPDiv} key={category.id}>
                     <img className={styles.categoriesImg} src={`http://localhost:3333${category.image}`} alt={category.title}/>
                     <p className={styles.categoriInfo}>{category.title}</p>
