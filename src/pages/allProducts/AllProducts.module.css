@@ -1,3 +1,84 @@
+
+.allProductsDiv{
+    padding: 40px 40px;
+}
+.allProductsBtn{
+    padding: 8px 16px;
+    border-radius:  6px;
+border: 1px solid #DDD;
+color: #282828;
+cursor: pointer;
+margin-left: 16px;
+
+}
+.allProductsTitle{
+    color: #282828;
+    font-size: 64px;
+    font-weight: 700;
+    margin-top: 40px;
+}
+.allInputs{
+    display: flex;
+    margin-top: 40px;
+    gap: 40px;
+
+}
+
+.discountedInput{
+    display: flex;
+    gap: 16px;
+    align-items: center;
+}
+.span{
+    display: flex;
+    align-items: center;
+    
+}
+.priceInputText{
+    display: flex;
+    
+}
+.priceText, .discountPar, label{
+    font-size: 20px;
+    color: #282828;
+    font-weight: 600;
+}
+.priceInputText input {
+    margin-left: 16px;
+    padding: 8px 16px;
+    border-radius: 6px;
+    border: 1px solid #DDD;
+    outline: none;
+    
+}
+option {
+    font-size: 16px;
+    color: #282828;
+    font-weight: 500;
+}
+.checkbox{
+width: 36px;
+height: 36px;
+border-radius: 6px;
+border: 1px solid #DDD;
+appearance: none;
+}
+.checkbox:checked {
+    background: #393;
+    color: white;
+    background-image: url('data:image/svg+xml;utf8,<svg fill="%23ffffff" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M9 16.2l-4.2-4.2-1.4 1.4 5.6 5.6 12-12-1.4-1.4z"/></svg>');
+    background-repeat: no-repeat;
+    background-position: center;
+}
+select{
+    padding: 8px 8px 8px 16px;
+    border-radius: 6px;
+    border: 1px solid #DDD;
+    outline: none;
+    font-size: 16px;
+    color: #282828;
+    font-weight: 500;
+}
 .productImg{
     width: 316px;
 }

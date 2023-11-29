@@ -76,19 +76,26 @@ function handleDiscountCheckboxChange() {
 }
 
     return(
-        <div>
+        <div className={styles.allProductsDiv}>
           <MainPageBtn />
-          <button>All products</button>
-          <p>All products</p>
-          <p>Price</p>
+          <button className={styles.allProductsBtn}>All products</button>
+          <p className={styles.allProductsTitle}>All products</p>
+          <div className={styles.allInputs}>
+          <div className={styles.priceInputText}>
+          <p className={styles.priceText}>Price</p>
           <input type="text" placeholder="from" value={priceFrom} onChange={(e) => setPriceFrom(e.target.value)}/>
           <input type="text" placeholder="to" value={priceTo} onChange={(e) => setPriceTo(e.target.value)}/>
-          <p>Discounted items</p>
-          <input
+          </div>
+          <div className={styles.discountedInput}>
+          <p className={styles.discountPar}>Discounted items</p>
+          <input 
+                className={styles.checkbox}
                 type="checkbox"
                 checked={showDiscounted}
                 onChange={handleDiscountCheckboxChange}
             />
+            </div>
+            <div className={styles.span}>
           <span>
     <label htmlFor="priceSort">Sorted  </label>
     <select id="priceSort" onChange={handleSortChange}>
@@ -98,6 +105,8 @@ function handleDiscountCheckboxChange() {
         <option value="lowToHigh">price: low-high</option>
     </select>
 </span>
+</div>
+</div>
           <div>
             {status === "loading" && <p>Loading...</p>}
             {status === "succeeded" && 
