@@ -12,8 +12,9 @@ function AllProducts(){
     const [displayedProducts, setDisplayedProducts] = useState([]);
     const [priceFrom, setPriceFrom] = useState("");
     const [priceTo, setPriceTo] = useState("");
+    const [showDiscounted, setShowDiscounted] = useState(false);
 
-    const discountProducts = products.filter(product => product.discont_price !== null && product.discont_price < product.price).length;
+    
 
     useEffect(() => {
         dispatch(fetchProducts())
@@ -35,6 +36,15 @@ function AllProducts(){
             setDisplayedProducts(products)
         }
     }, [priceFrom, priceTo, products])
+
+    useEffect(() => {
+        if (showDiscounted) {
+            const discountedProducts = products.filter(product => product.discont_price !== null && product.discont_price < product.price);
+            setDisplayedProducts(discountedProducts);
+        } else {
+            setDisplayedProducts(products);
+        }
+    }, [showDiscounted, products]);
 
     function handleSortChange(event) {
         
@@ -61,6 +71,9 @@ function AllProducts(){
     setDisplayedProducts(sortedProducts);
 }
     
+function handleDiscountCheckboxChange() {
+    setShowDiscounted(!showDiscounted);
+}
 
     return(
         <div>
@@ -71,7 +84,11 @@ function AllProducts(){
           <input type="text" placeholder="from" value={priceFrom} onChange={(e) => setPriceFrom(e.target.value)}/>
           <input type="text" placeholder="to" value={priceTo} onChange={(e) => setPriceTo(e.target.value)}/>
           <p>Discounted items</p>
-          <input type="text" value={discountProducts} readOnly />
+          <input
+                type="checkbox"
+                checked={showDiscounted}
+                onChange={handleDiscountCheckboxChange}
+            />
           <span>
     <label htmlFor="priceSort">Sorted  </label>
     <select id="priceSort" onChange={handleSortChange}>
