@@ -9,7 +9,10 @@ function AllProducts(){
     const products = useSelector(state => state.products.products);
     const status  = useSelector(state => state.products.status);
 
-    const [displayedProducts, setDisplayedProducts] = useState([])
+    const [displayedProducts, setDisplayedProducts] = useState([]);
+    const [priceFrom, setPriceFrom] = useState("");
+    const [priceTo, setPriceTo] = useState("");
+
     const discountProducts = products.filter(product => product.discont_price !== null && product.discont_price < product.price).length;
 
     useEffect(() => {
@@ -20,6 +23,18 @@ function AllProducts(){
         
         setDisplayedProducts(products);
     }, [products]);
+
+    useEffect(() => {
+        if(priceFrom !== "" || priceTo !== "") {
+            const filteredProducts = products.filter(product => {
+                const price = product.price;
+                return (priceFrom === "" || price >= priceFrom)  && (priceTo === '' || price <= priceTo);
+            })
+            setDisplayedProducts(filteredProducts)
+        }else{
+            setDisplayedProducts(products)
+        }
+    }, [priceFrom, priceTo, products])
 
     function handleSortChange(event) {
         
@@ -53,8 +68,8 @@ function AllProducts(){
           <button>All products</button>
           <p>All products</p>
           <p>Price</p>
-          <input type="text" placeholder="from" />
-          <input type="text" placeholder="to" />
+          <input type="text" placeholder="from" value={priceFrom} onChange={(e) => setPriceFrom(e.target.value)}/>
+          <input type="text" placeholder="to" value={priceTo} onChange={(e) => setPriceTo(e.target.value)}/>
           <p>Discounted items</p>
           <input type="text" value={discountProducts} readOnly />
           <span>

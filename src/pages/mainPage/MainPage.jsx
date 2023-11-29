@@ -39,6 +39,7 @@ function MainPage(){
         </div>
         <div className={styles.categoriesDiv}>
             <h2 className={styles.categoriesTitle}>Categories</h2>
+            <div className={styles.categoriesBar}></div>
             <button className={styles.categoriesBtn} onClick={() => {navigateMain("/categories")}}>All categories </button>
         </div>
         <div className={styles.swipperDiv}>

@@ -18,13 +18,20 @@
 }
 .categoriesDiv{
     display: flex;
-    justify-content: space-between;
+    
     padding: 80px 40px 40px 40px;
 }
 .categoriesTitle{
     color: #282828;
     font-size: 64px;
     font-weight: 700;
+}
+.categoriesBar{
+    background:  #DDD;
+    width: 70%;
+height: 1px;
+margin-left: 32px;
+margin-top: 40px;
 }
 .categoriesBtn{
     height: 36px;
@@ -34,6 +41,7 @@ border: 1px solid  #DDD;
 color: #8B8B8B;
 font-size: 16px;
 cursor: pointer;
+margin-top: 20px;
 }
 .categoriesImg{
     width: 316px;
