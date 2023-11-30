@@ -51,11 +51,7 @@ margin-left: 16px;
     outline: none;
     
 }
-option {
-    font-size: 16px;
-    color: #282828;
-    font-weight: 500;
-}
+
 .checkbox{
 width: 36px;
 height: 36px;
@@ -70,15 +66,37 @@ appearance: none;
     background-repeat: no-repeat;
     background-position: center;
 }
-select{
-    padding: 8px 8px 8px 16px;
+
+
+.priceSort {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none; 
+    background-image: url('../../assets/images/downIcon.svg'); 
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    width: 200px;
+    padding: 8px 38px 8px 16px;
     border-radius: 6px;
     border: 1px solid #DDD;
     outline: none;
     font-size: 16px;
     color: #282828;
     font-weight: 500;
+    margin-left: 16px;
+    outline: none;
+    
 }
+
+.productsImage{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 32px; 
+    margin-top: 60px;
+    align-items: center;
+    text-align: center;
+}
+
 .productImg{
     width: 316px;
 }

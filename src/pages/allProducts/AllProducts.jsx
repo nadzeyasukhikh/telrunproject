@@ -3,6 +3,8 @@ import MainPageBtn from "../../components/MainPageBtn"
 import { useEffect, useState } from "react";
 import { fetchProducts } from "../../store/slices/productSlice";
 import styles from "./AllProducts.module.css"
+import downIcon from "../../assets/images/downIcon.svg"
+import upIcon from "../../assets/images/upIcon.png"
 
 function AllProducts(){
     const dispatch = useDispatch();
@@ -13,6 +15,9 @@ function AllProducts(){
     const [priceFrom, setPriceFrom] = useState("");
     const [priceTo, setPriceTo] = useState("");
     const [showDiscounted, setShowDiscounted] = useState(false);
+    const [isSelectOpen, setIsSelectOpen] = useState(false);
+
+
 
     
 
@@ -75,6 +80,12 @@ function handleDiscountCheckboxChange() {
     setShowDiscounted(!showDiscounted);
 }
 
+
+const toggleSelect = () => {
+    setIsSelectOpen(!isSelectOpen);
+};
+
+
     return(
         <div className={styles.allProductsDiv}>
           <MainPageBtn />
@@ -97,8 +108,9 @@ function handleDiscountCheckboxChange() {
             </div>
             <div className={styles.span}>
           <span>
-    <label htmlFor="priceSort">Sorted  </label>
-    <select id="priceSort" onChange={handleSortChange}>
+    <label>Sorted  </label>
+    <select className={styles.priceSort} onChange={handleSortChange} onClick={toggleSelect} 
+    style={{ backgroundImage: `url(${isSelectOpen ? upIcon : downIcon})` }}>
         <option value="default">by default</option>
         <option value="newest">newest</option>
         <option value="highToLow">price: high-low</option>
@@ -107,16 +119,18 @@ function handleDiscountCheckboxChange() {
 </span>
 </div>
 </div>
-          <div>
+          <div className={styles.productsImage}>
             {status === "loading" && <p>Loading...</p>}
             {status === "succeeded" && 
             displayedProducts.map(product => (
+                
                 <div key={product.id}>
                     <img className={styles.productImg} src={`http://localhost:3333${product.image}`} alt={product.title}/>
                     <h3>{product.title}</h3>
                     <p>{product.price}</p>
                     {product.discont_price && <p>{product.discont_price}</p>}
                 </div>
+                
             ))
             }
           </div>
