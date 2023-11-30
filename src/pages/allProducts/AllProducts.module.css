@@ -1,64 +1,73 @@
-
-.allProductsDiv{
+.allProductsDiv {
     padding: 40px 40px;
 }
-.allProductsBtn{
+
+.allProductsBtn {
     padding: 8px 16px;
-    border-radius:  6px;
-border: 1px solid #DDD;
-color: #282828;
-cursor: pointer;
-margin-left: 16px;
+    border-radius: 6px;
+    border: 1px solid #DDD;
+    color: #282828;
+    cursor: pointer;
+    margin-left: 16px;
 
 }
-.allProductsTitle{
+
+.allProductsTitle {
     color: #282828;
     font-size: 64px;
     font-weight: 700;
     margin-top: 40px;
 }
-.allInputs{
+
+.allInputs {
     display: flex;
     margin-top: 40px;
     gap: 40px;
 
 }
 
-.discountedInput{
+.discountedInput {
     display: flex;
     gap: 16px;
     align-items: center;
 }
-.span{
+
+.span {
     display: flex;
     align-items: center;
-    
+
 }
-.priceInputText{
+
+.priceInputText {
     display: flex;
-    
+
 }
-.priceText, .discountPar, label{
+
+.priceText,
+.discountPar,
+label {
     font-size: 20px;
     color: #282828;
     font-weight: 600;
 }
+
 .priceInputText input {
     margin-left: 16px;
     padding: 8px 16px;
     border-radius: 6px;
     border: 1px solid #DDD;
     outline: none;
-    
+
 }
 
-.checkbox{
-width: 36px;
-height: 36px;
-border-radius: 6px;
-border: 1px solid #DDD;
-appearance: none;
+.checkbox {
+    width: 36px;
+    height: 36px;
+    border-radius: 6px;
+    border: 1px solid #DDD;
+    appearance: none;
 }
+
 .checkbox:checked {
     background: #393;
     color: white;
@@ -71,8 +80,8 @@ appearance: none;
 .priceSort {
     -webkit-appearance: none;
     -moz-appearance: none;
-    appearance: none; 
-    background-image: url('../../assets/images/downIcon.svg'); 
+    appearance: none;
+    background-image: url('../../assets/images/downIcon.svg');
     background-repeat: no-repeat;
     background-position: right 10px center;
     width: 200px;
@@ -85,18 +94,119 @@ appearance: none;
     font-weight: 500;
     margin-left: 16px;
     outline: none;
-    
+
 }
 
-.productsImage{
+.productsDiv {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 32px; 
+    gap: 32px;
     margin-top: 60px;
     align-items: center;
     text-align: center;
 }
 
-.productImg{
+.productImg {
     width: 316px;
+    height: 284px;
+    border-radius: 12px 12px 0 0;
+    border: 1px solid #DDD;
+}
+
+.priceDscPriceDiv {
+    display: flex;
+    justify-content: flex-start;
+    gap: 16px;
+    margin-top: 16px;
+}
+
+.productTitlePrice {
+    width: 316px;
+    border: 1px solid transparent;
+    border-top: none;
+    margin-top: 20px;
+    padding: 5px 32px 32px 32px;
+}
+
+.productName {
+    overflow: hidden;
+    color: #282828;
+    text-overflow: ellipsis;
+    font-size: 20px;
+    white-space: nowrap;
+}
+
+.productCard {
+    border-radius: 12px;
+    border: 1px solid #DDD;
+    width: 316px;
+    height: 420px;
+    cursor: pointer;
+    transition: 0.5s;
+    position: relative;
+}
+
+.productCard:hover {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.4), 0 6px 20px 0 rgba(0, 0, 0, 0.33);
+    transition: 0.5s;
+}
+
+.price {
+    color: #282828;
+    font-size: 40px;
+    font-weight: 600;
+}
+
+.discountPrice {
+    color: #8B8B8B;
+    font-size: 20px;
+    font-weight: 500;
+    margin-top: 16px;
+    text-decoration: line-through;
+}
+
+.addToCartBtn {
+    display: none;
+    position: absolute;
+    margin-left: 16px;
+    border-radius: var(--radius-small, 6px);
+    background: var(--green, #393);
+    border: none;
+    bottom: 140px;
+    width: 284px;
+    padding: 16px 32px;
+    justify-content: center;
+    align-items: center;
+    color: var(--txt-white, #FFF);
+    font-size: 20px;
+    font-weight: 600;
+    transition: 0.5s;
+    cursor: pointer;
+}
+
+.productCard:hover .addToCartBtn {
+    display: block;
+    transition: 0.5s;
+}
+
+.addToCartBtn:hover {
+    background: var(--black, #282828);
+    transition: 0.5s;
+}
+
+.discountText {
+    position: absolute;
+    right: 16px;
+    top: 16px;
+    padding: 4px 8px;
+    border-radius: var(--radius-small, 6px);
+    background: var(--green, #393);
+}
+
+.discountText p {
+    color: var(--txt-white, #FFF);
+    font-family: Montserrat;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 600;
 }
