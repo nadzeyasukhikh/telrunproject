@@ -169,15 +169,15 @@ label {
     display: none;
     position: absolute;
     margin-left: 16px;
-    border-radius: var(--radius-small, 6px);
-    background: var(--green, #393);
+    border-radius: 6px;
+    background: #393;
     border: none;
     bottom: 140px;
     width: 284px;
     padding: 16px 32px;
     justify-content: center;
     align-items: center;
-    color: var(--txt-white, #FFF);
+    color: #FFF;
     font-size: 20px;
     font-weight: 600;
     transition: 0.5s;
@@ -190,7 +190,7 @@ label {
 }
 
 .addToCartBtn:hover {
-    background: var(--black, #282828);
+    background:  #282828;
     transition: 0.5s;
 }
 
@@ -199,14 +199,12 @@ label {
     right: 16px;
     top: 16px;
     padding: 4px 8px;
-    border-radius: var(--radius-small, 6px);
-    background: var(--green, #393);
+    border-radius: 6px;
+    background: #393;
 }
 
 .discountText p {
-    color: var(--txt-white, #FFF);
-    font-family: Montserrat;
+    color:  #FFF;
     font-size: 20px;
-    font-style: normal;
     font-weight: 600;
 }
