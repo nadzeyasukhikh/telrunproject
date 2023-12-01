@@ -2,6 +2,7 @@
     display: flex;
     justify-content: space-between;
     padding: 30px 40px;
+    border-bottom: 1px solid var(--grey-divider, #DDD);
 }
 .link{
     display: flex;
