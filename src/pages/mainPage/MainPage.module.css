@@ -47,16 +47,15 @@ margin-top: 20px;
     width: 316px;
     height: 350px;
     background-repeat: no-repeat;
-    padding-top: 20px;
-    margin-left: 70px;
+    border-radius: 12px 12px 0 0;
 }
 .swipperDiv{
-   
-    padding-left: 25%;
-    padding-right: 25%;
+   display: flex;
+    text-align: center;
     padding-top: 40px;
     cursor: pointer;
-    
+    justify-content: space-between;
+   margin: 0 60px 0 40px;
 }
 .swipperTitle{
     color: #282828;
@@ -65,49 +64,17 @@ margin-top: 20px;
    text-align: center;
    font-weight: 600;
 }
-
-@media (max-width: 400px) {
-    .mainTitle {
-        font-size: 32px; 
-        padding: 20px 10px 0 10px; 
-        width: auto; 
-    }
-
-    .mainBtn {
-        margin: 20px 0 105px 10px;
-        padding: 8px 20px; 
-        font-size: 14px; 
-    }
-
-    .categoriesDiv {
-        flex-direction: column; 
-        align-items: center; 
-        padding: 40px 10px; 
-    }
-
-    .categoriesTitle {
-        font-size: 32px; 
-    }
-
-    .categoriesBtn {
-        margin-top: 20px;
-        font-size: 14px;
-    }
-
-    .categoriesImg {
-        width: 100px; 
-        height: 117px; 
-        margin-left: 0; 
-        padding-top: 10px; 
-    }
-
-    .swipperDiv {
-        padding-left: 5%; 
-        padding-right: 5%;
-    }
-
-    .swipperTitle {
-        font-size: 14px; 
-        padding: 10px; 
+.categoryCard{
+    display: block;
+    text-align: center;
+    align-items: center;
+    width: 316px;
+    border-radius: 12px;
+    border: 1px solid #DDD;
+    transition: 0.5s;
 }
+.categoryCard:hover{
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.4), 0 6px 20px 0 rgba(0, 0, 0, 0.33);
+    transition: 0.5s;
 }
+

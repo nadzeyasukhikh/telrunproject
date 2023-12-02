@@ -114,7 +114,6 @@ function AllProducts() {
           />
         </div>
         <div className={styles.span}>
-          <span>
             <label>Sorted </label>
             <select
               className={styles.priceSort}
@@ -129,7 +128,6 @@ function AllProducts() {
               <option value="highToLow">price: high-low</option>
               <option value="lowToHigh">price: low-high</option>
             </select>
-          </span>
         </div>
       </div>
       <div className={styles.productsDiv}>
