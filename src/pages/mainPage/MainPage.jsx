@@ -2,9 +2,10 @@ import { useNavigate } from "react-router-dom";
 import mainBack from "../../assets/images/mainBack.svg";
 import styles from "./MainPage.module.css";
 import { useDispatch, useSelector } from "react-redux";
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { fetchCategories } from "../../store/slices/categoriesSlice";
 import DiscountForm from "../../components/DiscountForm";
+import SaleComponent from "../../components/SaleComponent";
 
 function MainPage() {
   const dispatch = useDispatch();
@@ -22,13 +23,18 @@ function MainPage() {
     backgroundSize: "cover",
   };
   const navigateMain = useNavigate();
+  const saleComponentRef = useRef(null)
+
+  const scrollToSaleComponent = () => {
+    saleComponentRef.current?.scrollIntoView({ behavior: 'smooth' });
+  };
   return (
     <>
       <div style={backgroundStyle}>
         <h1 className={styles.mainTitle}>
           Amazing Discounts on Garden Products!
         </h1>
-        <button className={styles.mainBtn}>Check out</button>
+        <button className={styles.mainBtn} onClick={scrollToSaleComponent}>Check out</button>
       </div>
       <div className={styles.categoriesDiv}>
         <h2 className={styles.categoriesTitle}>Categories</h2>
@@ -55,6 +61,9 @@ function MainPage() {
         ))}
       </div>
       <DiscountForm />
+      <div ref={saleComponentRef}>
+      <SaleComponent />
+      </div>
     </>
   );
 }
