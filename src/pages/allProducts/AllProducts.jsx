@@ -131,7 +131,7 @@ function AllProducts() {
         </div>
       </div>
       <div className={styles.productsDiv}>
-        {status === "loading" && <p>Loading...</p>}
+        {status === "loading" && <p className={styles.loading}>Loading...</p>}
         {status === "succeeded" &&
           displayedProducts.map((product) => {
             let discountText = null;

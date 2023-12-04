@@ -2,6 +2,7 @@ import { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { fetchProducts } from "../store/slices/productSlice"
 import styles from "./SaleComponent.module.css"
+import { useNavigate } from "react-router-dom";
 
 
 
@@ -44,32 +45,36 @@ function SaleComponent(){
     const calculateDiscountPercent = (originalPrice, discountPrice) => {
         return ((originalPrice - discountPrice) / originalPrice * 100).toFixed(0);
       };
+      const navigateSale = useNavigate()
 
     return (
         <div className={styles.saleComponent}>
             <div className={styles.titleBtnDiv}>
             <p className={styles.componentTitle}>Sale</p>
             <div className={styles.componentBar}></div>
-            <button className={styles.componentBtn}>All sales</button>
+            <button className={styles.componentBtn} onClick={() => {navigateSale("/allSales")}}>All sales</button>
             </div>
             <div>
                 <button className={styles.updateBtn} onClick={updateSelectedProducts}>update</button>
-            
+
+                 <div className={styles.saleDiv}>
             {status === 'loading' && <p className={styles.loading}>Loading...</p>}
             {status === 'succeeded' && selectedProducts.map(product => (
+                
                 <div key={product.id} className={styles.product}>
-                    <img src={`http://localhost:3333${product.image}`} alt={product.title} />
+                    <img className={styles.saleImg} src={`http://localhost:3333${product.image}`} alt={product.title} />
                     <button className={styles.addToCartBtn}>Add to Cart</button>
                     <div className={styles.percentDiv}>
                         <p>-{calculateDiscountPercent(product.price, product.discont_price)}%</p>
                     </div>
-                    <p>{product.title}</p>
+                    <h3 className={styles.productName}>{product.title}</h3>
                     <div className={styles.price}>
-                        <p>{product.discont_price}</p>
-                        <p className={styles.originalPrice}>{product.price}</p>
+                        <p className={styles.dscPrice}>${product.discont_price}</p>
+                        <p className={styles.originalPrice}>${product.price}</p>
                     </div>
                 </div>
             ))}
+            </div>
             </div>
         </div>
     );
