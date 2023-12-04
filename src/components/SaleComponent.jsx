@@ -42,9 +42,7 @@ function SaleComponent(){
     }, [saleProducts]);
 
 
-    const calculateDiscountPercent = (originalPrice, discountPrice) => {
-        return ((originalPrice - discountPrice) / originalPrice * 100).toFixed(0);
-      };
+    
       const navigateSale = useNavigate()
 
     return (
@@ -81,3 +79,7 @@ function SaleComponent(){
 }
 
 export default SaleComponent
+
+const calculateDiscountPercent = (originalPrice, discountPrice) => {
+    return ((originalPrice - discountPrice) / originalPrice * 100).toFixed(0);
+  };
