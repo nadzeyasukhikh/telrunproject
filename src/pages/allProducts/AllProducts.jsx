@@ -16,6 +16,7 @@ function AllProducts() {
   const [priceTo, setPriceTo] = useState("");
   const [showDiscounted, setShowDiscounted] = useState(false);
   const [isSelectOpen, setIsSelectOpen] = useState(false);
+  const [sortValue, setSortValue] = useState("");
 
   useEffect(() => {
     dispatch(fetchProducts());
@@ -26,53 +27,47 @@ function AllProducts() {
   }, [products]);
 
   useEffect(() => {
+    let updatedProducts = [...products];
+
     if (priceFrom !== "" || priceTo !== "") {
-      const filteredProducts = products.filter((product) => {
+      updatedProducts = updatedProducts.filter((product) => {
         const price = product.price;
         return (
           (priceFrom === "" || price >= priceFrom) &&
           (priceTo === "" || price <= priceTo)
         );
       });
-      setDisplayedProducts(filteredProducts);
-    } else {
-      setDisplayedProducts(products);
     }
-  }, [priceFrom, priceTo, products]);
 
-  useEffect(() => {
     if (showDiscounted) {
-      const discountedProducts = products.filter(
+      updatedProducts = updatedProducts.filter(
         (product) =>
           product.discont_price !== null &&
           product.discont_price < product.price
       );
-      setDisplayedProducts(discountedProducts);
-    } else {
-      setDisplayedProducts(products);
     }
-  }, [showDiscounted, products]);
-
-  function handleSortChange(event) {
-    const sortValue = event.target.value;
-    const sortedProducts = [...products];
 
     switch (sortValue) {
       case "newest":
-        sortedProducts.sort(
+        updatedProducts.sort(
           (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
         );
         break;
       case "highToLow":
-        sortedProducts.sort((a, b) => b.price - a.price);
+        updatedProducts.sort((a, b) => b.price - a.price);
         break;
       case "lowToHigh":
-        sortedProducts.sort((a, b) => a.price - b.price);
+        updatedProducts.sort((a, b) => a.price - b.price);
         break;
       default:
         break;
     }
-    setDisplayedProducts(sortedProducts);
+
+    setDisplayedProducts(updatedProducts);
+  }, [priceFrom, priceTo, showDiscounted, products, sortValue]);
+
+  function handleSortChange(event) {
+    setSortValue(event.target.value);
   }
 
   function handleDiscountCheckboxChange() {
@@ -114,20 +109,20 @@ function AllProducts() {
           />
         </div>
         <div className={styles.span}>
-            <label>Sorted </label>
-            <select
-              className={styles.priceSort}
-              onChange={handleSortChange}
-              onClick={toggleSelect}
-              style={{
-                backgroundImage: `url(${isSelectOpen ? upIcon : downIcon})`,
-              }}
-            >
-              <option value="byDefault">by default</option>
-              <option value="newest">newest</option>
-              <option value="highToLow">price: high-low</option>
-              <option value="lowToHigh">price: low-high</option>
-            </select>
+          <label>Sorted </label>
+          <select
+            className={styles.priceSort}
+            onChange={handleSortChange}
+            onClick={toggleSelect}
+            style={{
+              backgroundImage: `url(${isSelectOpen ? upIcon : downIcon})`,
+            }}
+          >
+            <option value="byDefault">by default</option>
+            <option value="newest">newest</option>
+            <option value="highToLow">price: high-low</option>
+            <option value="lowToHigh">price: low-high</option>
+          </select>
         </div>
       </div>
       <div className={styles.productsDiv}>
