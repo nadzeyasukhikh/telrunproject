@@ -1,0 +1,213 @@
+.allProductsDiv {
+    padding: 40px 40px;
+}
+.categoriesBtn{
+    padding: 8px 16px;
+    border-radius: 6px;
+    border: 1px solid #DDD;
+    color: #8B8B8B;
+    cursor: pointer;
+    margin-left: 16px;
+}
+.toolsBtn{
+    padding: 8px 16px;
+    border-radius: 6px;
+    border: 1px solid #DDD;
+    color: #282828;
+    cursor: pointer;
+    margin-left: 16px; 
+}
+.categoryProductTitle{
+    padding-top: 40px;
+    color: #282828;
+    font-size: 64px;
+}
+.allInputs {
+    display: flex;
+    margin-top: 40px;
+    gap: 40px;
+
+}
+
+.discountedInput {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+}
+
+
+
+.priceInputText {
+    display: flex;
+
+}
+
+.priceText,
+.discountPar,
+label {
+    font-size: 20px;
+    color: #282828;
+    font-weight: 600;
+}
+
+.priceInputText input {
+    margin-left: 16px;
+    padding: 8px 16px;
+    border-radius: 6px;
+    border: 1px solid #DDD;
+    outline: none;
+
+}
+
+.checkbox {
+    width: 36px;
+    height: 36px;
+    border-radius: 6px;
+    border: 1px solid #DDD;
+    appearance: none;
+}
+
+.checkbox:checked {
+    background: #393;
+    color: white;
+    background-image: url('data:image/svg+xml;utf8,<svg fill="%23ffffff" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M0 0h24v24H0z" fill="none"/><path d="M9 16.2l-4.2-4.2-1.4 1.4 5.6 5.6 12-12-1.4-1.4z"/></svg>');
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+
+.priceSort {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-image: url('../../assets/images/downIcon.svg');
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    width: 200px;
+    padding: 8px 38px 8px 16px;
+    border-radius: 6px;
+    border: 1px solid #DDD;
+    outline: none;
+    font-size: 16px;
+    color: #282828;
+    font-weight: 500;
+    margin-left: 16px;
+    outline: none;
+
+}
+.productsDiv {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 32px;
+    margin-top: 60px;
+    align-items: center;
+    text-align: center;
+}
+
+.productImg {
+    width: 316px;
+    height: 284px;
+    border-radius: 12px 12px 0 0;
+    border: 1px solid #DDD;
+}
+
+.priceDscPriceDiv {
+    display: flex;
+    justify-content: flex-start;
+    gap: 16px;
+    margin-top: 16px;
+}
+
+.productTitlePrice {
+    width: 316px;
+    border: 1px solid transparent;
+    border-top: none;
+    margin-top: 20px;
+    padding: 5px 32px 32px 32px;
+}
+
+.productName {
+    overflow: hidden;
+    color: #282828;
+    text-overflow: ellipsis;
+    font-size: 20px;
+    white-space: nowrap;
+}
+
+.productCard {
+    border-radius: 12px;
+    border: 1px solid #DDD;
+    width: 316px;
+    height: 420px;
+    cursor: pointer;
+    transition: 0.5s;
+    position: relative;
+}
+
+.productCard:hover {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.4), 0 6px 20px 0 rgba(0, 0, 0, 0.33);
+    transition: 0.5s;
+}
+
+.price {
+    color: #282828;
+    font-size: 40px;
+    font-weight: 600;
+}
+
+.discountPrice {
+    color: #8B8B8B;
+    font-size: 20px;
+    font-weight: 500;
+    margin-top: 16px;
+    text-decoration: line-through;
+}
+
+.addToCartBtn {
+    display: none;
+    position: absolute;
+    margin-left: 16px;
+    border-radius: 6px;
+    background: #393;
+    border: none;
+    bottom: 140px;
+    width: 284px;
+    padding: 16px 32px;
+    justify-content: center;
+    align-items: center;
+    color: #FFF;
+    font-size: 20px;
+    font-weight: 600;
+    transition: 0.5s;
+    cursor: pointer;
+}
+
+.productCard:hover .addToCartBtn {
+    display: block;
+    transition: 0.5s;
+}
+
+.addToCartBtn:hover {
+    background:  #282828;
+    transition: 0.5s;
+}
+
+.discountText {
+    position: absolute;
+    right: 16px;
+    top: 16px;
+    padding: 4px 8px;
+    border-radius: 6px;
+    background: #393;
+}
+
+.discountText p {
+    color:  #FFF;
+    font-size: 20px;
+    font-weight: 600;
+}
+.loading{
+    color: #282828;
+    font-size: 20px;
+    font-weight: 600;
+}

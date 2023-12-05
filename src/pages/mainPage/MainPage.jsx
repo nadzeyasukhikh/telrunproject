@@ -28,6 +28,12 @@ function MainPage() {
   const scrollToSaleComponent = () => {
     saleComponentRef.current?.scrollIntoView({ behavior: 'smooth' });
   };
+
+  const navigate = useNavigate();
+
+    const handleCategoryClick = (categoryId) => {
+        navigate(`/category/${categoryId}`);
+    };
   return (
     <>
       <div style={backgroundStyle}>
@@ -54,7 +60,8 @@ function MainPage() {
             <img
               className={styles.categoriesImg}
               src={`http://localhost:3333${category.image}`}
-              alt={category.title}
+              alt={category.title} 
+              onClick={() =>{handleCategoryClick(category.id)}}
             />
             <p className={styles.swipperTitle}>{category.title}</p>
           </div>
