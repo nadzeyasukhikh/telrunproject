@@ -3,17 +3,20 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchCategories } from "../../store/slices/categoriesSlice";
 import styles from "./Categories.module.css";
 import { useNavigate } from "react-router-dom";
-import MainPageBtn from "../../components/MainPageBtn";
+import MainPageBtn from "../../components/mainPageBtn/MainPageBtn";
 
 function Categories() {
+  
   const dispatch = useDispatch();
   const categories = useSelector((state) => state.categories.categories);
   const status = useSelector((state) => state.categories.status);
+
+
   useEffect(() => {
-    if (status === "idle") {
+    
       dispatch(fetchCategories());
-    }
-  }, [status, dispatch]);
+    
+  }, [ dispatch]);
 
   const navigateCategories = useNavigate();
 

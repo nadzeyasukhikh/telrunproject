@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import MainPageBtn from "../../components/MainPageBtn";
+import MainPageBtn from "../../components/mainPageBtn/MainPageBtn";
 import styles from "./AllSales.module.css";
 import { useEffect, useState } from "react";
 import { fetchProducts } from "../../store/slices/productSlice";

@@ -4,8 +4,8 @@ import styles from "./MainPage.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useRef } from "react";
 import { fetchCategories } from "../../store/slices/categoriesSlice";
-import DiscountForm from "../../components/DiscountForm";
-import SaleComponent from "../../components/SaleComponent";
+import DiscountForm from "../../components/discountForm/DiscountForm";
+import SaleComponent from "../../components/saleComponent/SaleComponent";
 
 function MainPage() {
   const dispatch = useDispatch();
@@ -23,24 +23,26 @@ function MainPage() {
     backgroundSize: "cover",
   };
   const navigateMain = useNavigate();
-  const saleComponentRef = useRef(null)
+  const saleComponentRef = useRef(null);
 
   const scrollToSaleComponent = () => {
-    saleComponentRef.current?.scrollIntoView({ behavior: 'smooth' });
+    saleComponentRef.current?.scrollIntoView({ behavior: "smooth" });
   };
 
   const navigate = useNavigate();
 
-    const handleCategoryClick = (categoryId) => {
-        navigate(`/category/${categoryId}`);
-    };
+  const handleCategoryClick = (categoryId) => {
+    navigate(`/category/${categoryId}`);
+  };
   return (
     <>
       <div style={backgroundStyle}>
         <h1 className={styles.mainTitle}>
           Amazing Discounts on Garden Products!
         </h1>
-        <button className={styles.mainBtn} onClick={scrollToSaleComponent}>Check out</button>
+        <button className={styles.mainBtn} onClick={scrollToSaleComponent}>
+          Check out
+        </button>
       </div>
       <div className={styles.categoriesDiv}>
         <h2 className={styles.categoriesTitle}>Categories</h2>
@@ -60,8 +62,10 @@ function MainPage() {
             <img
               className={styles.categoriesImg}
               src={`http://localhost:3333${category.image}`}
-              alt={category.title} 
-              onClick={() =>{handleCategoryClick(category.id)}}
+              alt={category.title}
+              onClick={() => {
+                handleCategoryClick(category.id);
+              }}
             />
             <p className={styles.swipperTitle}>{category.title}</p>
           </div>
@@ -69,7 +73,7 @@ function MainPage() {
       </div>
       <DiscountForm />
       <div ref={saleComponentRef}>
-      <SaleComponent />
+        <SaleComponent />
       </div>
     </>
   );

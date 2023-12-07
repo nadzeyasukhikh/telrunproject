@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import MainPageBtn from "../../components/MainPageBtn";
+import MainPageBtn from "../../components/mainPageBtn/MainPageBtn";
 import { useEffect, useState } from "react";
 import { fetchProducts } from "../../store/slices/productSlice";
 import styles from "./AllProducts.module.css";
@@ -128,25 +128,18 @@ function AllProducts() {
       <div className={styles.productsDiv}>
         {status === "loading" && <p className={styles.loading}>Loading...</p>}
         {status === "succeeded" &&
-          displayedProducts.map((product) => {
-            let discountText = null;
-            if (product.discont_price) {
-              const discountPercent =
-                ((product.price - product.discont_price) / product.price) * 100;
-              discountText = (
-                <div className={styles.discountText}>
-                  <p>-{discountPercent.toFixed(0)}%</p>
-                </div>
-              );
-            }
-            return (
+          displayedProducts.map((product) => (
               <div className={styles.productCard} key={product.id}>
                 <img
                   className={styles.productImg}
                   src={`http://localhost:3333${product.image}`}
                   alt={product.title}
                 />
-                {discountText}
+                {product.discont_price && (
+                <div className={styles.discountText}>
+                  <p>-{calculateDiscountPercent(product.discont_price, product.price)}%</p>
+                </div>
+                )}
                 <button className={styles.addToCartBtn}>Add to Cart</button>
                 <div className={styles.productTitlePrice}>
                   <h3 className={styles.productName}>{product.title}</h3>
@@ -162,11 +155,19 @@ function AllProducts() {
                   </div>
                 </div>
               </div>
-            );
-          })}
-      </div>
-    </div>
+          ))}
+               </div>
+               </div>
+            
+          
+                    
+              
   );
-}
+  }
+
 
 export default AllProducts;
+
+const calculateDiscountPercent = (discountPrice, originalPrice ) => {
+  return (((originalPrice - discountPrice) / originalPrice) * 100).toFixed(0);
+}

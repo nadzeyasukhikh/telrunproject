@@ -1,8 +1,8 @@
 import { useDispatch, useSelector } from "react-redux";
-import icon from "../assets/images/discountIcon.svg";
+import icon from "../../assets/images/discountIcon.svg";
 import styles from "./DiscountForm.module.css";
 
-import { sendSaleData, setShowModal } from "../store/slices/saleSlice";
+import { sendSaleData, setShowModal } from "../../store/slices/saleSlice";
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 function DiscountForm() {

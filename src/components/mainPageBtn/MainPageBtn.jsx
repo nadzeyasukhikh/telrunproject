@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import styles from "../components/MainPageBtn.module.css";
+import styles from "./MainPageBtn.module.css";
 function MainPageBtn() {
   const navigateCategories = useNavigate();
 

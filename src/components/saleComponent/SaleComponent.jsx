@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchProducts } from "../store/slices/productSlice";
+import { fetchProducts } from "../../store/slices/productSlice";
 import styles from "./SaleComponent.module.css";
 import { useNavigate } from "react-router-dom";
 
@@ -41,6 +41,11 @@ function SaleComponent() {
   }, [saleProducts]);
 
   const navigateSale = useNavigate();
+  const navigateProduct = useNavigate();
+
+  const handleProductClick = (id) => {
+    navigateProduct(`/products/${id}`);
+  };
 
   return (
     <div className={styles.saleComponent}>
@@ -70,6 +75,7 @@ function SaleComponent() {
                   className={styles.saleImg}
                   src={`http://localhost:3333${product.image}`}
                   alt={product.title}
+                  onClick={() => handleProductClick(product.id)}
                 />
                 <button className={styles.addToCartBtn}>Add to Cart</button>
                 <div className={styles.percentDiv}>
