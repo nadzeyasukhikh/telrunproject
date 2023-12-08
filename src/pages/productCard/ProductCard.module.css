@@ -1,85 +1,178 @@
-.productCardDiv{
+.productCardDiv {
     padding: 40px 40px;
 }
-.categoriesBtn, .toolsBtn{
+
+.categoriesBtn,
+.toolsBtn {
     padding: 8px 16px;
     border-radius: 6px;
     border: 1px solid #DDD;
     color: #8B8B8B;
     cursor: pointer;
 }
-.allBtn{
+
+.allBtn {
     display: flex;
     gap: 16px;
 }
-.btnTitle{
+
+.btnTitle {
     padding: 8px 16px;
     border-radius: 6px;
     border: 1px solid #DDD;
     color: #282828;
     cursor: pointer;
 }
-.productCardImg{
+
+.productCardImg {
     width: 548px;
     height: 572px;
     border-radius: 12px;
     border: 1px solid #DDD;
 }
-.productsInfo{
+
+.productsInfo {
     display: flex;
     margin-top: 40px;
     justify-content: center;
     gap: 300px;
 }
-.priceInfo{
+
+.priceInfo {
     gap: 30px;
     display: flex;
     text-align: center;
-   align-items: last baseline;
-   margin-top: 32px;
+    align-items: last baseline;
+    margin-top: 32px;
 }
-.productTitle{
-color: #282828;
-font-size: 40px;
-font-weight: 700;
-width: 548px;
-}
-.priceText{
+
+.productTitle {
     color: #282828;
-font-size: 64px;
-font-weight: 700;
+    font-size: 40px;
+    font-weight: 700;
+    width: 548px;
 }
-.discountText{
-    color: #8B8B8B;
-font-size: 40px;
-font-weight: 500;
-text-decoration: line-through;
 
-
-}
-.positionDiv{
-    position: relative;
-}
-.percentDiv{
-    border-radius:6px;
-background:#393;
-position: absolute;
-top: -55px;
-
-}
-.percentText{
-    color:  #FFF;
-font-size: 20px;
-font-weight: 600;
-padding: 4px 8px;
-}
-.productPrice{
+.priceText {
     color: #282828;
     font-size: 64px;
     font-weight: 700;
 }
-.loading{
+
+.discountText {
+    color: #8B8B8B;
+    font-size: 40px;
+    font-weight: 500;
+    text-decoration: line-through;
+
+
+}
+
+.positionDiv {
+    position: relative;
+}
+
+.percentDiv {
+    border-radius: 6px;
+    background: #393;
+    position: absolute;
+    top: -55px;
+
+}
+
+.percentText {
+    color: #FFF;
+    font-size: 20px;
+    font-weight: 600;
+    padding: 4px 8px;
+}
+
+.productPrice {
+    color: #282828;
+    font-size: 64px;
+    font-weight: 700;
+}
+
+.loading {
     color: #282828;
     font-size: 20px;
     font-weight: 600;
+}
+
+.quantityBtn {
+    display: flex;
+    margin-top: 32px;
+}
+
+.minusBtn,
+.plusBtn {
+    width: 58px;
+    height: 58px;
+    border-radius: 6px;
+    border: 1px solid #DDD;
+}
+
+.span {
+    padding: 0 38px;
+    color: #282828;
+    text-align: center;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 600;
+    width: 96px;
+}
+
+.plusNinusBtns {
+    border-top: 1px solid #DDD;
+    border-bottom: 1px solid #DDD;
+    align-items: center;
+    display: flex;
+}
+
+.addToCartBtn {
+    margin-left: 32px;
+    border-radius: 6px;
+    background: #393;
+    border: none;
+    bottom: 140px;
+    width: 284px;
+    padding: 16px 32px;
+    justify-content: center;
+    align-items: center;
+    color: #FFF;
+    font-size: 20px;
+    font-weight: 600;
+    transition: 0.5s;
+    cursor: pointer;
+}
+
+.addToCartBtn:hover {
+    background: #282828;
+    transition: 0.5s;
+}
+.cartText{
+    color: #282828;
+font-size: 16px;
+font-style: normal;
+font-weight: 400;
+width: 548px;
+line-height: 130%;
+}
+.description{
+    color: var(--txt-black, #282828);
+font-family: Montserrat;
+font-size: 20px;
+font-style: normal;
+font-weight: 600;
+margin-top: 32px;
+margin-bottom: 20px;
+}
+.readBtn{
+    color: var(--txt-black, #282828);
+    border: none;
+    border-bottom: #282828;
+    text-decoration-line: underline;
+    font-size: 16px;
+font-style: normal;
+font-weight: 500;
 }
