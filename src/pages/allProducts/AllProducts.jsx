@@ -5,6 +5,7 @@ import { fetchProducts } from "../../store/slices/productSlice";
 import styles from "./AllProducts.module.css";
 import downIcon from "../../assets/images/downIcon.svg";
 import upIcon from "../../assets/images/upIcon.png";
+import { useNavigate } from "react-router-dom";
 
 function AllProducts() {
   const dispatch = useDispatch();
@@ -78,6 +79,12 @@ function AllProducts() {
     setIsSelectOpen(!isSelectOpen);
   };
 
+  const navigateProduct = useNavigate();
+
+  const handleProductClick = (id) => {
+    navigateProduct(`/products/${id}`);
+  };
+
   return (
     <div className={styles.allProductsDiv}>
       <MainPageBtn />
@@ -133,7 +140,8 @@ function AllProducts() {
                 <img
                   className={styles.productImg}
                   src={`http://localhost:3333${product.image}`}
-                  alt={product.title}
+                  alt={product.title} 
+                  onClick={() => handleProductClick(product.id)}
                 />
                 {product.discont_price && (
                 <div className={styles.discountText}>

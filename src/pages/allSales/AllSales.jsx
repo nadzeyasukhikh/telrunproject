@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import { fetchProducts } from "../../store/slices/productSlice";
 import upIcon from "../../assets/images/upIcon.png";
 import downIcon from "../../assets/images/downIcon.svg";
+import { useNavigate } from "react-router-dom";
 
 function AllSales() {
   const dispatch = useDispatch();
@@ -66,6 +67,12 @@ function AllSales() {
     setIsSelectOpen(!isSelectOpen);
   };
 
+  const navigateProduct = useNavigate();
+
+  const handleProductClick = (id) => {
+    navigateProduct(`/products/${id}`);
+  };
+
   return (
     <div className={styles.allProductsDiv}>
       <MainPageBtn />
@@ -112,7 +119,8 @@ function AllSales() {
               <img
                 className={styles.saleImg}
                 src={`http://localhost:3333${product.image}`}
-                alt={product.title}
+                alt={product.title} 
+                onClick={() => handleProductClick(product.id)}
               />
               <button className={styles.addToCartBtn}>Add to Cart</button>
               <div className={styles.percentDiv}>

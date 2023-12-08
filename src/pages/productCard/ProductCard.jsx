@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import {  useNavigate, useParams } from "react-router-dom";
 import styles from "./ProductCard.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
@@ -19,6 +19,15 @@ function ProductCard() {
     dispatch(fetchProducts());
   }, [dispatch]);
 
+  const navigate = useNavigate();
+  
+
+  const navigateToCategoryProducts = () => {
+    const categoryId = products.categoryId; 
+    navigate(`/category/${categoryId}`); 
+  };
+  const navigateCategories = useNavigate();
+
   return (
     <div className={styles.productCardDiv}>
       {status === "loading" && <p className={styles.loading}>Loading...</p>}
@@ -26,8 +35,10 @@ function ProductCard() {
         <div key={products.id}>
           <div className={styles.allBtn}>
             <MainPage />
-            <button className={styles.categoriesBtn}>Categories</button>
-            <button className={styles.toolsBtn}>Tools and equipment</button>
+            <button className={styles.categoriesBtn} onClick={() => {
+            navigateCategories("/categories");
+          }}>Categories</button>
+            <button className={styles.toolsBtn} onClick={navigateToCategoryProducts}>Tools and equipment</button>
             <button className={styles.btnTitle}>{products.title}</button>
           </div>
           <div className={styles.productsInfo}>
@@ -42,7 +53,7 @@ function ProductCard() {
                 {products.discont_price ? (
                   <p className={styles.priceText}>${products.discont_price}</p>
                 ) : (
-                  <p>{products.price}</p>
+                  <p className={styles.productPrice}>${products.price}</p>
                 )}
                 {products.discont_price && (
                   <p className={styles.discountText}>${products.price}</p>

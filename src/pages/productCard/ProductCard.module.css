@@ -21,6 +21,7 @@
 }
 .productCardImg{
     width: 548px;
+    height: 572px;
     border-radius: 12px;
     border: 1px solid #DDD;
 }
@@ -28,7 +29,7 @@
     display: flex;
     margin-top: 40px;
     justify-content: center;
-    gap: 200px;
+    gap: 300px;
 }
 .priceInfo{
     gap: 30px;
@@ -53,20 +54,32 @@ font-weight: 700;
 font-size: 40px;
 font-weight: 500;
 text-decoration: line-through;
-position: relative;
+
 
 }
-
+.positionDiv{
+    position: relative;
+}
 .percentDiv{
     border-radius:6px;
 background:#393;
-margin-bottom: 24px;
 position: absolute;
-top: 380px;
+top: -55px;
+
 }
 .percentText{
     color:  #FFF;
 font-size: 20px;
 font-weight: 600;
 padding: 4px 8px;
+}
+.productPrice{
+    color: #282828;
+    font-size: 64px;
+    font-weight: 700;
+}
+.loading{
+    color: #282828;
+    font-size: 20px;
+    font-weight: 600;
 }

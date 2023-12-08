@@ -38,7 +38,7 @@ function CategoryProducts() {
   };
 
   const filteredProducts =
-    products &&
+    products?.data ?
     products.data
       .filter((product) => {
         const price = product.discont_price || product.price;
@@ -59,13 +59,20 @@ function CategoryProducts() {
           default:
             return 0;
         }
-      });
+      })
+      : [];
   const handleSortingChange = (e) => {
     setSorting(e.target.value);
   };
 
   const handleShowDiscountedChange = (e) => {
     setShowDiscounted(e.target.checked);
+  };
+
+  const navigateProduct = useNavigate();
+
+  const handleProductClick = (id) => {
+    navigateProduct(`/products/${id}`);
   };
 
   return (
@@ -134,7 +141,8 @@ function CategoryProducts() {
                 <img
                   className={styles.productImg}
                   src={`http://localhost:3333${product.image}`}
-                  alt={product.title}
+                  alt={product.title} 
+                  onClick={() => handleProductClick(product.id)}
                 />
                 {product.discont_price && (
                   <div className={styles.discountText}>
