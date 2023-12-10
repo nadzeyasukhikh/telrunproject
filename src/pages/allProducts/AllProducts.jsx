@@ -29,44 +29,52 @@ function AllProducts() {
 
   useEffect(() => {
     let updatedProducts = [...products];
-
-    if (priceFrom !== "" || priceTo !== "") {
-      updatedProducts = updatedProducts.filter((product) => {
-        const price = product.price;
-        return (
-          (priceFrom === "" || price >= priceFrom) &&
-          (priceTo === "" || price <= priceTo)
-        );
-      });
-    }
-
-    if (showDiscounted) {
-      updatedProducts = updatedProducts.filter(
-        (product) =>
-          product.discont_price !== null &&
-          product.discont_price < product.price
+  
+    const fromPrice = priceFrom !== "" ? priceFrom : null;
+    const toPrice = priceTo !== "" ? priceTo : null;
+  
+    
+    updatedProducts = updatedProducts.filter((product) => {
+      const effectivePrice = product.discont_price !== null ? product.discont_price : product.price;
+      return (
+        (fromPrice === null || effectivePrice >= fromPrice) &&
+        (toPrice === null || effectivePrice <= toPrice)
       );
+    });
+  
+    
+    if (showDiscounted) {
+      updatedProducts = updatedProducts.filter(product => product.discont_price !== null);
     }
-
+  
+    
     switch (sortValue) {
       case "newest":
-        updatedProducts.sort(
-          (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
-        );
+        updatedProducts.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
         break;
       case "highToLow":
-        updatedProducts.sort((a, b) => b.price - a.price);
+        updatedProducts.sort((a, b) => {
+          const priceA = a.discont_price !== null ? a.discont_price : a.price;
+          const priceB = b.discont_price !== null ? b.discont_price : b.price;
+          return priceB - priceA;
+        });
         break;
       case "lowToHigh":
-        updatedProducts.sort((a, b) => a.price - b.price);
+        updatedProducts.sort((a, b) => {
+          const priceA = a.discont_price !== null ? a.discont_price : a.price;
+          const priceB = b.discont_price !== null ? b.discont_price : b.price;
+          return priceA - priceB;
+        });
         break;
       default:
+        
         break;
     }
-
+  
     setDisplayedProducts(updatedProducts);
   }, [priceFrom, priceTo, showDiscounted, products, sortValue]);
 
+  
   function handleSortChange(event) {
     setSortValue(event.target.value);
   }

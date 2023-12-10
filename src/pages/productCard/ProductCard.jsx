@@ -1,11 +1,11 @@
-import {  useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import styles from "./ProductCard.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { fetchProducts } from "../../store/slices/productSlice";
 import MainPage from "../../components/mainPageBtn/MainPageBtn";
-import minus from "../../assets/images/minus.svg"
-import plus from "../../assets/images/plus.svg"
+import minus from "../../assets/images/minus.svg";
+import plus from "../../assets/images/plus.svg";
 
 function ProductCard() {
   const { id: stringId } = useParams();
@@ -22,38 +22,38 @@ function ProductCard() {
   }, [dispatch]);
 
   const navigate = useNavigate();
-  
 
   const navigateToCategoryProducts = () => {
-    const categoryId = products.categoryId; 
-    navigate(`/category/${categoryId}`); 
+    const categoryId = products.categoryId;
+    navigate(`/category/${categoryId}`);
   };
   const navigateCategories = useNavigate();
 
   const [quantity, setQuantity] = useState(1);
   const increaseQuantity = () => {
-    setQuantity(prevQuantity => prevQuantity +1)
+    setQuantity((prevQuantity) => prevQuantity + 1);
   };
 
   const decreaseQuantity = () => {
-    setQuantity(prevQuantity => prevQuantity > 1 ? prevQuantity - 1 : prevQuantity);
+    setQuantity((prevQuantity) =>
+      prevQuantity > 1 ? prevQuantity - 1 : prevQuantity
+    );
   };
 
   const fullText = products?.description;
   const [isReadMore, setIsReadMore] = useState(true);
 
   const toggleReadMore = () => {
-      setIsReadMore(!isReadMore);
+    setIsReadMore(!isReadMore);
   };
 
   const divStyle = {
     height: isReadMore ? "150px" : "none",
-      overflowY: isReadMore ? "hidden" : "auto",
-      marginBottom: "16px",
-      border: "none",
-      padding: "10px"
+    overflowY: isReadMore ? "hidden" : "auto",
+    marginBottom: "16px",
+    border: "none",
+    padding: "10px 0",
   };
-
 
   return (
     <div className={styles.productCardDiv}>
@@ -62,10 +62,20 @@ function ProductCard() {
         <div key={products.id}>
           <div className={styles.allBtn}>
             <MainPage />
-            <button className={styles.categoriesBtn} onClick={() => {
-            navigateCategories("/categories");
-          }}>Categories</button>
-            <button className={styles.toolsBtn} onClick={navigateToCategoryProducts}>Tools and equipment</button>
+            <button
+              className={styles.categoriesBtn}
+              onClick={() => {
+                navigateCategories("/categories");
+              }}
+            >
+              Categories
+            </button>
+            <button
+              className={styles.toolsBtn}
+              onClick={navigateToCategoryProducts}
+            >
+              Tools and equipment
+            </button>
             <button className={styles.btnTitle}>{products.title}</button>
           </div>
           <div className={styles.productsInfo}>
@@ -101,32 +111,34 @@ function ProductCard() {
                 </div>
               </div>
               <div className={styles.quantityBtn}>
-                <div className={styles.plusNinusBtns}>
-            <button  className={styles.minusBtn} onClick={decreaseQuantity}  disabled={quantity === 1}><img src={minus} alt="minus"/></button>
-            <div className={styles.span}>{quantity}</div>
-            <button className={styles.plusBtn} onClick={increaseQuantity}><img src={plus} alt="plus"/></button>
-            </div>
-            
-            <button className={styles.addToCartBtn}>Add to cart</button>
-            
-          </div>
-          <div>
+                <div className={styles.plusMinusBtns}>
+                  <button
+                    className={styles.minusBtn}
+                    onClick={decreaseQuantity}
+                    disabled={quantity === 1}
+                  >
+                    <img src={minus} alt="minus" />
+                  </button>
+                  <div className={styles.span}>{quantity}</div>
+                  <button className={styles.plusBtn} onClick={increaseQuantity}>
+                    <img src={plus} alt="plus" />
+                  </button>
+                </div>
+
+                <button className={styles.addToCartBtn}>Add to cart</button>
+              </div>
+              <div>
                 <p className={styles.description}>Description</p>
                 <div style={divStyle}>
-                <p className={styles.cartText}>{fullText}</p>
-            </div>
-                
-            <button className={styles.readBtn} onClick={toggleReadMore} >
-                {isReadMore ? "Read more" : "Hide"}
-            </button>
-                
+                  <p className={styles.cartText}>{fullText}</p>
+                </div>
 
+                <button className={styles.readBtn} onClick={toggleReadMore}>
+                  {isReadMore ? "Read more" : "Hide"}
+                </button>
+              </div>
             </div>
-            </div>
-            
           </div>
-          
-          
         </div>
       )}
     </div>

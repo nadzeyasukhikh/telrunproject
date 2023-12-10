@@ -19,7 +19,7 @@ function Nav() {
       <div>
         <button className={styles.btn}>
           <img className={styles.btnImg} src={backet} alt="Basket"/>
-          <div className={styles.count}><span>12</span></div>
+          <div className={styles.count}><span>0</span></div>
         </button>
       </div>
       
