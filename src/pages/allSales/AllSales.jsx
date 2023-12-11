@@ -2,10 +2,11 @@ import { useDispatch, useSelector } from "react-redux";
 import MainPageBtn from "../../components/mainPageBtn/MainPageBtn";
 import styles from "./AllSales.module.css";
 import { useEffect, useState } from "react";
-import { fetchProducts } from "../../store/slices/productSlice";
+import { addToCart, fetchProducts } from "../../store/slices/productSlice";
 import upIcon from "../../assets/images/upIcon.png";
 import downIcon from "../../assets/images/downIcon.svg";
 import { useNavigate } from "react-router-dom";
+
 
 function AllSales() {
   const dispatch = useDispatch();
@@ -17,6 +18,16 @@ function AllSales() {
   const [priceTo, setPriceTo] = useState("");
   const [isSelectOpen, setIsSelectOpen] = useState(false);
   const [sortValue, setSortValue] = useState("");
+
+  const cartItems = useSelector((state) => state.products.cartItems);
+
+  const handleAddToCart = (product) => {
+    dispatch(addToCart(product))
+  }
+  
+  const isProductInCart = (productId) => {
+    return cartItems.some(item => item.id === productId);
+  };
 
   useEffect(() => {
     dispatch(fetchProducts());
@@ -122,7 +133,9 @@ function AllSales() {
                 alt={product.title} 
                 onClick={() => handleProductClick(product.id)}
               />
-              <button className={styles.addToCartBtn}>Add to Cart</button>
+              <button className={`${styles.addToCartBtn} ${isProductInCart(product.id) ? styles.addedToCart : ''}`} 
+                onClick={() => handleAddToCart(product)}
+                >{isProductInCart(product.id) ? 'Added' : 'Add to Cart'}</button>
               <div className={styles.percentDiv}>
                 <p>
                   -

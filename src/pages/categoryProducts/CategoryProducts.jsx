@@ -21,6 +21,10 @@ function CategoryProducts() {
   const [showDiscounted, setShowDiscounted] = useState(false);
   const [sorting, setSorting] = useState("byDefault");
 
+  const categoryIdNumber = parseInt(categoryId, 10); 
+  const categories = useSelector((state) => state.categories.categories);
+  const category = categories.find((cat) => cat.id === categoryIdNumber);
+
   useEffect(() => {
     dispatch(fetchProductsByCategory(categoryId));
   }, [categoryId, dispatch]);
@@ -86,8 +90,8 @@ function CategoryProducts() {
       >
         Categories
       </button>
-      <button className={styles.toolsBtn}>Tools and equipment</button>
-      <h3 className={styles.categoryProductTitle}>Tools and equipment</h3>
+      <button className={styles.toolsBtn}>{category?.title}</button>
+      <h3 className={styles.categoryProductTitle}>{category?.title}</h3>
       <div className={styles.allInputs}>
         <div className={styles.priceInputText}>
           <p className={styles.priceText}>Price</p>

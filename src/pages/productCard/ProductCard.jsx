@@ -6,6 +6,7 @@ import { fetchProducts } from "../../store/slices/productSlice";
 import MainPage from "../../components/mainPageBtn/MainPageBtn";
 import minus from "../../assets/images/minus.svg";
 import plus from "../../assets/images/plus.svg";
+import { fetchCategories } from "../../store/slices/categoriesSlice";
 
 function ProductCard() {
   const { id: stringId } = useParams();
@@ -21,13 +22,18 @@ function ProductCard() {
     dispatch(fetchProducts());
   }, [dispatch]);
 
+  useEffect(() => {
+    dispatch(fetchCategories());
+  }, [dispatch]);
+
   const navigate = useNavigate();
 
   const navigateToCategoryProducts = () => {
-    const categoryId = products.categoryId;
-    navigate(`/category/${categoryId}`);
+    if (product?.categoryId) {
+      navigate(`/category/${product.categoryId}`);
+    }
   };
-  const navigateCategories = useNavigate();
+  
 
   const [quantity, setQuantity] = useState(1);
   const increaseQuantity = () => {
@@ -55,6 +61,12 @@ function ProductCard() {
     padding: "10px 0",
   };
 
+  const categories = useSelector((state) => state.categories.categories);
+  const product = useSelector((state) =>
+    state.products.products.find((p) => p.id === id)
+  );
+  
+  const categoryTitle = categories.find(cat => cat.id === product?.categoryId)?.title || 'No Category';
   return (
     <div className={styles.productCardDiv}>
       {status === "loading" && <p className={styles.loading}>Loading...</p>}
@@ -65,7 +77,7 @@ function ProductCard() {
             <button
               className={styles.categoriesBtn}
               onClick={() => {
-                navigateCategories("/categories");
+                navigateToCategoryProducts("/categories");
               }}
             >
               Categories
@@ -74,7 +86,7 @@ function ProductCard() {
               className={styles.toolsBtn}
               onClick={navigateToCategoryProducts}
             >
-              Tools and equipment
+              {categoryTitle}
             </button>
             <button className={styles.btnTitle}>{products.title}</button>
           </div>

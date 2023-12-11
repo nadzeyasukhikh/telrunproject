@@ -6,6 +6,7 @@ import styles from "./AllProducts.module.css";
 import downIcon from "../../assets/images/downIcon.svg";
 import upIcon from "../../assets/images/upIcon.png";
 import { useNavigate } from "react-router-dom";
+import { addToCart } from "../../store/slices/productSlice";
 
 function AllProducts() {
   const dispatch = useDispatch();
@@ -18,6 +19,20 @@ function AllProducts() {
   const [showDiscounted, setShowDiscounted] = useState(false);
   const [isSelectOpen, setIsSelectOpen] = useState(false);
   const [sortValue, setSortValue] = useState("");
+  const [addedToCart, setAddedToCart] = useState({});
+  const cartItems = useSelector((state) => state.products.cartItems);
+
+  const handleAddToCart = (productId) => {
+    const product = products.find((p) => p.id === productId);
+    if (product) {
+        dispatch(addToCart(product));
+    }
+    setAddedToCart({ ...addedToCart, [productId]: "Added" });
+  }
+
+  const isProductInCart = (productId) => {
+    return cartItems.some(item => item.id === productId);
+  };
 
   useEffect(() => {
     dispatch(fetchProducts());
@@ -156,7 +171,9 @@ function AllProducts() {
                   <p>-{calculateDiscountPercent(product.discont_price, product.price)}%</p>
                 </div>
                 )}
-                <button className={styles.addToCartBtn}>Add to Cart</button>
+                <button className={`${styles.addToCartBtn} ${isProductInCart(product.id) ? styles.addedToCart : ''}`} 
+                onClick={() => handleAddToCart(product.id)}
+                >{isProductInCart(product.id) ? 'Added' : 'Add to Cart'}</button>
                 <div className={styles.productTitlePrice}>
                   <h3 className={styles.productName}>{product.title}</h3>
                   <div className={styles.priceDscPriceDiv}>

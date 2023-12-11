@@ -23,7 +23,7 @@
 }
 .btn{
     border: none;
-    
+    cursor: pointer;
 }
 .btnImg{
     width: 48px;
