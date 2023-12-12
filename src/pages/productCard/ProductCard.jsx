@@ -2,7 +2,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import styles from "./ProductCard.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
-import { fetchProducts } from "../../store/slices/productSlice";
+import { addToCart, fetchProducts } from "../../store/slices/productSlice";
 import MainPage from "../../components/mainPageBtn/MainPageBtn";
 import minus from "../../assets/images/minus.svg";
 import plus from "../../assets/images/plus.svg";
@@ -17,6 +17,16 @@ function ProductCard() {
   );
 
   const status = useSelector((state) => state.products.status);
+  const cartItems =  useSelector((state) => state.products.cartItems);
+
+  const handleAddToCart = (product) => {
+    dispatch(addToCart(product))
+  }
+  
+  const isProductInCart = (productId) => {
+    return cartItems.some(item => item.id === productId);
+  };
+
 
   useEffect(() => {
     dispatch(fetchProducts());
@@ -137,7 +147,9 @@ function ProductCard() {
                   </button>
                 </div>
 
-                <button className={styles.addToCartBtn}>Add to cart</button>
+                <button className={`${styles.addToCartBtn} ${isProductInCart(product.id) ? styles.addedToCart : ''}`} 
+                onClick={() => handleAddToCart(product)}
+                >{isProductInCart(product.id) ? 'Added' : 'Add to Cart'}</button>
               </div>
               <div>
                 <p className={styles.description}>Description</p>

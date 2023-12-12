@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import MainPageBtn from "../../components/mainPageBtn/MainPageBtn";
 import downIcon from "../../assets/images/downIcon.svg";
 import upIcon from "../../assets/images/upIcon.png";
+import { addToCart } from "../../store/slices/productSlice";
 
 function CategoryProducts() {
   const { categoryId } = useParams();
@@ -24,6 +25,15 @@ function CategoryProducts() {
   const categoryIdNumber = parseInt(categoryId, 10); 
   const categories = useSelector((state) => state.categories.categories);
   const category = categories.find((cat) => cat.id === categoryIdNumber);
+  const cartItems = useSelector((state) => state.products.cartItems);
+
+  const handleAddToCart = (product) => {
+    dispatch(addToCart(product))
+  }
+  
+  const isProductInCart = (productId) => {
+    return cartItems.some(item => item.id === productId);
+  };
 
   useEffect(() => {
     dispatch(fetchProductsByCategory(categoryId));
@@ -153,7 +163,9 @@ function CategoryProducts() {
                   <p>{calculateDiscountPercent(product.discont_price, product.price)}%</p>
                 </div>
                 )}
-                <button className={styles.addToCartBtn}>Add to Cart</button>
+                <button className={`${styles.addToCartBtn} ${isProductInCart(product.id) ? styles.addedToCart : ''}`} 
+                onClick={() => handleAddToCart(product)}
+                >{isProductInCart(product.id) ? 'Added' : 'Add to Cart'}</button>
                 <div className={styles.productTitlePrice}>
                   <h3 className={styles.productName}>{product.title}</h3>
                   <div className={styles.priceDscPriceDiv}>

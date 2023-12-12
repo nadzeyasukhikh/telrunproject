@@ -29,7 +29,7 @@ function AllProducts() {
     }
     setAddedToCart({ ...addedToCart, [productId]: "Added" });
   }
-
+  
   const isProductInCart = (productId) => {
     return cartItems.some(item => item.id === productId);
   };
