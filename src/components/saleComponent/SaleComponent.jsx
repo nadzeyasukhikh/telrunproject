@@ -49,8 +49,8 @@ function SaleComponent() {
   };
 
   const handleAddToCart = (product) => {
-    dispatch(addToCart(product))
-  }
+    dispatch(addToCart({ product, quantity: 1 }));
+}
   
   const isProductInCart = (productId) => {
     return cartItems.some(item => item.id === productId);

@@ -1,46 +1,52 @@
-.filledShopping{
+.filledShopping {
     padding: 40px;
 }
-.titleBtn{
+
+.titleBtn {
     display: flex;
     align-items: center;
 }
-.cartTitle{
-color: #282828;
-font-size: 64px;
-font-weight: 700;
-white-space: nowrap;
+
+.cartTitle {
+    color: #282828;
+    font-size: 64px;
+    font-weight: 700;
+    white-space: nowrap;
 }
-.titleBtnBar{
+
+.titleBtnBar {
     background: #DDD;
     width: 100%;
     height: 1px;
     margin-left: 32px;
 }
-.backToStoreBatn{
-padding: 8px 16px;
-border-radius: 6px;
-border: 1px solid  #DDD;
-white-space: nowrap;
-color:  #8B8B8B;
-font-size: 16px;
-font-weight: 500;
-}
-.cartOrderDiv {
-    max-height: 585px; 
-    overflow-y: auto; 
-    
-    
+
+.backToStoreBatn {
+    padding: 8px 16px;
+    border-radius: 6px;
+    border: 1px solid #DDD;
+    white-space: nowrap;
+    color: #8B8B8B;
+    font-size: 16px;
+    font-weight: 500;
 }
 
-.cartInfoDiv{
+.cartOrderDiv {
+    max-height: 585px;
+    overflow-y: auto;
+
+
+}
+
+.cartInfoDiv {
     display: flex;
     margin-bottom: 16px;
     gap: 32px;
     border-radius: 12px;
-border: 1px solid #DDD;
+    border: 1px solid #DDD;
 }
-.cartImg{
+
+.cartImg {
     width: 200px;
     height: 180px;
     border-bottom-left-radius: 12px;
@@ -48,55 +54,62 @@ border: 1px solid #DDD;
     border: 1px solid #DDD;
     cursor: pointer;
 }
-.titleDltBtn{
+
+.titleDltBtn {
     display: flex;
     padding-top: 32px;
     width: 476px;
     justify-content: space-between;
 }
-.flexDiv{
+
+.flexDiv {
     display: flex;
-    gap: 32px;
+    gap: 180px;
     margin-top: 40px;
 }
-.cartInfoDiv{
+
+.cartInfoDiv {
     width: 780px;
 }
-.title{
-color: #282828;
-font-size: 20px;
-overflow: hidden;
-text-overflow: ellipsis;
-white-space: nowrap;
+
+.title {
+    color: #282828;
+    font-size: 20px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
-.deleteBtn{
-width: 24px;
-height: 24px;
-border: none;
-cursor: pointer;
-margin-left: 50px;
+.deleteBtn {
+    width: 24px;
+    height: 24px;
+    border: none;
+    cursor: pointer;
+    margin-left: 50px;
 }
-.priceBtnDiv{
+
+.priceBtnDiv {
     display: flex;
     margin-top: 32px;
-    
+
 }
-.btnSpan{
-    border-top: 1px solid #DDD;
-    border-bottom: 1px solid #DDD;
-    border-radius:  6px;
+
+.btnSpan {
+
+    border-radius: 6px;
     align-items: center;
     display: flex;
 }
-.plusMinusBtn{
+
+.plusMinusBtn {
     border: none;
     padding: 17px;
     border-radius: 6px;
-border: 1px solid  #DDD;
-cursor: pointer;
+    border: 1px solid #DDD;
+    cursor: pointer;
 }
-.span{
+
+.span {
     padding: 0 38px;
     color: #282828;
     text-align: center;
@@ -104,4 +117,63 @@ cursor: pointer;
     font-style: normal;
     font-weight: 600;
     width: 96px;
+
+}
+
+.productPrice {
+    margin-left: 32px;
+    margin-top: 32px;
+    color: var(--txt-black, #282828);
+    font-family: Montserrat;
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 600;
+}
+
+.productDiscPrise {
+    margin-left: 16px;
+    margin-top: 48px;
+    color: var(--txt-grey, #8B8B8B);
+    font-family: Montserrat;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    text-decoration-line: line-through;
+}
+
+.orderTitle {
+    color: #282828;
+    font-size: 40px;
+    font-weight: 700;
+}
+
+.orderDiv {
+    padding-top: 32px;
+}
+
+.itemsCount {
+    color: #8B8B8B;
+    font-size: 40px;
+    font-weight: 500;
+    margin-top: 20px;
+}
+
+.totalDiv {
+    display: flex;
+    gap: 70px;
+    margin-top: 18px;
+    text-align: center;
+    align-items: center;
+}
+
+.totlalText {
+    color: #8B8B8B;
+    font-size: 40px;
+    font-weight: 500;
+}
+
+.totalPrice {
+    color: #282828;
+    font-size: 64px;
+    font-weight: 700;
 }

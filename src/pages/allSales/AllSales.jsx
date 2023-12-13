@@ -22,8 +22,8 @@ function AllSales() {
   const cartItems = useSelector((state) => state.products.cartItems);
 
   const handleAddToCart = (product) => {
-    dispatch(addToCart(product))
-  }
+    dispatch(addToCart({ product, quantity: 1 }));
+}
   
   const isProductInCart = (productId) => {
     return cartItems.some(item => item.id === productId);

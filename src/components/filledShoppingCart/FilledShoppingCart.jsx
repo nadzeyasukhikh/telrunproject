@@ -32,8 +32,10 @@ function FilledShoppingCart(){
         dispatch(decreaseCartItemQuantity(id));
     };
 
-  
-
+    const totalPrice = cartItems.reduce((total, item) => {
+        return total + (item.discont_price || item.price) * item.quantity;
+    }, 0);
+   
     
 
     const navigateProduct = useNavigate();
@@ -74,8 +76,8 @@ function FilledShoppingCart(){
                             onClick={() => increaseQuantity(item.id)}
                             ><img src={plus} alt="+"/></button>
                             </div>
-                            <p>${item.discont_price ? item.discont_price : item.price}</p>
-                            {item.discont_price && ( <p>${item.price}</p>)}
+                            <p className={styles.productPrice}>${item.discont_price ? (item.discont_price * item.quantity).toFixed(2) : (item.price * item.quantity).toFixed(2)}</p>
+                            {item.discont_price && ( <p className={styles.productDiscPrise}>${(item.price * item.quantity).toFixed(2)}</p>)}
                         </div>
                         </div>
                         
@@ -85,8 +87,13 @@ function FilledShoppingCart(){
             
             </div>
             <div className={styles.orderDiv}>
-                <p>Order details</p>
-                <p>Items</p>
+                <h3 className={styles.orderTitle}>Order details</h3>
+                <p className={styles.itemsCount}>{cartItems.length} items</p>
+                <div className={styles.totalDiv}>
+                    <p className={styles.totlalText}>Total</p>
+                <p className={styles.totalPrice}>${totalPrice.toFixed(2).toString().replace('.', ',')}</p>
+                </div>
+                
 
             </div>
             </div>

@@ -19,16 +19,14 @@ function AllProducts() {
   const [showDiscounted, setShowDiscounted] = useState(false);
   const [isSelectOpen, setIsSelectOpen] = useState(false);
   const [sortValue, setSortValue] = useState("");
-  const [addedToCart, setAddedToCart] = useState({});
   const cartItems = useSelector((state) => state.products.cartItems);
 
   const handleAddToCart = (productId) => {
     const product = products.find((p) => p.id === productId);
     if (product) {
-        dispatch(addToCart(product));
+        dispatch(addToCart({ product, quantity: 1 })); 
     }
-    setAddedToCart({ ...addedToCart, [productId]: "Added" });
-  }
+};
   
   const isProductInCart = (productId) => {
     return cartItems.some(item => item.id === productId);
