@@ -88,7 +88,7 @@ function FilledShoppingCart(){
             </div>
             <div className={styles.orderDiv}>
                 <h3 className={styles.orderTitle}>Order details</h3>
-                <p className={styles.itemsCount}>{cartItems.length} items</p>
+                <p className={styles.itemsCount}>{cartItems.length} {cartItems.length === 1 ? "item" : "items"}</p>
                 <div className={styles.totalDiv}>
                     <p className={styles.totlalText}>Total</p>
                 <p className={styles.totalPrice}>${totalPrice.toFixed(2).toString().replace('.', ',')}</p>
