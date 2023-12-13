@@ -43,7 +43,7 @@ function ProductCard() {
       navigate(`/category/${product.categoryId}`);
     }
   };
-  
+  const navigateToCategories = useNavigate()
 
   const [quantity, setQuantity] = useState(1);
   const increaseQuantity = () => {
@@ -87,7 +87,7 @@ function ProductCard() {
             <button
               className={styles.categoriesBtn}
               onClick={() => {
-                navigateToCategoryProducts("/categories");
+                navigateToCategories("/categories");
               }}
             >
               Categories

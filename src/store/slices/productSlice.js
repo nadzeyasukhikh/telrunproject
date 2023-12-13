@@ -19,8 +19,8 @@ const productSlice = createSlice({
     products: [],
     status: "idle",
     error: null,
-    cartItems: [],
-    cartItemCount: 0,
+    cartItems: JSON.parse(localStorage.getItem('cartItems')) || [],
+    cartItemCount: JSON.parse(localStorage.getItem('cartItems'))?.length || 0,
   },
   reducers: {
     addToCart: (state, action) => {
@@ -34,6 +34,10 @@ const productSlice = createSlice({
         }
         state.cartItemCount += 1;
     },
+    removeFromCart: (state, action) => {
+      state.cartItems = state.cartItems.filter(item => item.id !== action.payload);
+      state.cartItemCount = state.cartItems.length;
+  },
   },
   extraReducers(builder) {
     builder
@@ -51,5 +55,5 @@ const productSlice = createSlice({
   },
 });
 
-export const { addToCart } = productSlice.actions;
+export const { addToCart, removeFromCart } = productSlice.actions;
 export default productSlice.reducer;

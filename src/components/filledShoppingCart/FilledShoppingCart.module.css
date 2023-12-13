@@ -1,0 +1,58 @@
+.filledShopping{
+    padding: 40px;
+}
+.titleBtn{
+    display: flex;
+    align-items: center;
+}
+.cartTitle{
+color: #282828;
+font-size: 64px;
+font-weight: 700;
+white-space: nowrap;
+}
+.titleBtnBar{
+    background: #DDD;
+    width: 100%;
+    height: 1px;
+    margin-left: 32px;
+}
+.backToStoreBatn{
+padding: 8px 16px;
+border-radius: 6px;
+border: 1px solid  #DDD;
+white-space: nowrap;
+color:  #8B8B8B;
+font-size: 16px;
+font-weight: 500;
+}
+.cartOrderDiv {
+    max-height: 585px; 
+    overflow-y: auto; 
+    
+    
+}
+
+.cartInfoDiv{
+    display: flex;
+    margin-bottom: 16px;
+    gap: 32px;
+    border-radius: 12px;
+border: 1px solid #DDD;
+}
+.cartImg{
+    width: 200px;
+    height: 180px;
+    border-bottom-left-radius: 12px;
+    border-top-left-radius: 12px;
+    border: 1px solid #DDD;
+}
+.titleDltBtn{
+    display: flex;
+    padding: 32px;
+}
+.flexDiv{
+    display: flex;
+    gap: 32px;
+    margin-top: 40px;
+}
