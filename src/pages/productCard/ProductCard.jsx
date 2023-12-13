@@ -17,16 +17,12 @@ function ProductCard() {
   );
 
   const status = useSelector((state) => state.products.status);
-  const cartItems =  useSelector((state) => state.products.cartItems);
+  const cartItems = useSelector((state) => state.products.cartItems);
+  const [quantity, setQuantity] = useState(1);
 
-  const handleAddToCart = (product) => {
-    dispatch(addToCart(product))
-  }
-  
   const isProductInCart = (productId) => {
-    return cartItems.some(item => item.id === productId);
+    return cartItems.some((item) => item.id === productId);
   };
-
 
   useEffect(() => {
     dispatch(fetchProducts());
@@ -43,17 +39,22 @@ function ProductCard() {
       navigate(`/category/${product.categoryId}`);
     }
   };
-  const navigateToCategories = useNavigate()
+  const navigateToCategories = useNavigate();
 
-  const [quantity, setQuantity] = useState(1);
+  const handleAddToCart = () => {
+    dispatch(addToCart({ product: products, quantity }));
+  };
+
   const increaseQuantity = () => {
-    setQuantity((prevQuantity) => prevQuantity + 1);
+    if (!isProductInCart(product.id)) {
+      setQuantity((prevQuantity) => prevQuantity + 1);
+    }
   };
 
   const decreaseQuantity = () => {
-    setQuantity((prevQuantity) =>
-      prevQuantity > 1 ? prevQuantity - 1 : prevQuantity
-    );
+    if (!isProductInCart(product.id)) {
+      setQuantity((prevQuantity) => (prevQuantity > 1 ? prevQuantity - 1 : 1));
+    }
   };
 
   const fullText = products?.description;
@@ -75,8 +76,10 @@ function ProductCard() {
   const product = useSelector((state) =>
     state.products.products.find((p) => p.id === id)
   );
-  
-  const categoryTitle = categories.find(cat => cat.id === product?.categoryId)?.title || 'No Category';
+
+  const categoryTitle =
+    categories.find((cat) => cat.id === product?.categoryId)?.title ||
+    "No Category";
   return (
     <div className={styles.productCardDiv}>
       {status === "loading" && <p className={styles.loading}>Loading...</p>}
@@ -136,20 +139,29 @@ function ProductCard() {
                 <div className={styles.plusMinusBtns}>
                   <button
                     className={styles.minusBtn}
-                    onClick={decreaseQuantity}
-                    disabled={quantity === 1}
+                    onClick={() => decreaseQuantity(product.id)}
+                    disabled={isProductInCart(product.id)}
                   >
                     <img src={minus} alt="minus" />
                   </button>
                   <div className={styles.span}>{quantity}</div>
-                  <button className={styles.plusBtn} onClick={increaseQuantity}>
+                  <button
+                    className={styles.plusBtn}
+                    onClick={() => increaseQuantity(product.id)}
+                    disabled={isProductInCart(product.id)}
+                  >
                     <img src={plus} alt="plus" />
                   </button>
                 </div>
 
-                <button className={`${styles.addToCartBtn} ${isProductInCart(product.id) ? styles.addedToCart : ''}`} 
-                onClick={() => handleAddToCart(product)}
-                >{isProductInCart(product.id) ? 'Added' : 'Add to Cart'}</button>
+                <button
+                  className={`${styles.addToCartBtn} ${
+                    isProductInCart(product.id) ? styles.addedToCart : ""
+                  }`}
+                  onClick={() => handleAddToCart(product)}
+                >
+                  {isProductInCart(product.id) ? "Added" : "Add to Cart"}
+                </button>
               </div>
               <div>
                 <p className={styles.description}>Description</p>

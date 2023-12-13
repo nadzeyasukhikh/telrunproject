@@ -24,21 +24,37 @@ const productSlice = createSlice({
   },
   reducers: {
     addToCart: (state, action) => {
-        const existingIndex = state.cartItems.findIndex(
-          (item) => item.id === action.payload.id
-        );
-        if (existingIndex >= 0) {
-          state.cartItems[existingIndex].quantity += 1;
-        } else {
-          state.cartItems.push({ ...action.payload, quantity: 1 });
-        }
-        state.cartItemCount += 1;
-    },
+      const { product, quantity } = action.payload;
+      const existingIndex = state.cartItems.findIndex(
+        (item) => item.id === product.id
+      );
+      if (existingIndex >= 0) {
+          state.cartItems[existingIndex].quantity += quantity;
+      } else {
+          state.cartItems.push({ ...product, quantity });
+      }
+      state.cartItemCount = state.cartItems.reduce((total, item) => total + item.quantity, 0);
+  },
     removeFromCart: (state, action) => {
       state.cartItems = state.cartItems.filter(item => item.id !== action.payload);
       state.cartItemCount = state.cartItems.length;
   },
+  increaseCartItemQuantity: (state, action) => {
+    const itemIndex = state.cartItems.findIndex(item => item.id === action.payload);
+    if (itemIndex >= 0 && state.cartItems[itemIndex].quantity < 99) { 
+        state.cartItems[itemIndex].quantity += 1;
+    }
+   
   },
+  decreaseCartItemQuantity: (state, action) => {
+    const itemIndex = state.cartItems.findIndex(item => item.id === action.payload);
+    if (itemIndex >= 0 && state.cartItems[itemIndex].quantity > 1) {
+        state.cartItems[itemIndex].quantity -= 1;
+    }
+},
+},
+  
+
   extraReducers(builder) {
     builder
       .addCase(fetchProducts.pending, (state) => {
@@ -55,5 +71,5 @@ const productSlice = createSlice({
   },
 });
 
-export const { addToCart, removeFromCart } = productSlice.actions;
+export const { addToCart, removeFromCart, increaseCartItemQuantity, decreaseCartItemQuantity } = productSlice.actions;
 export default productSlice.reducer;

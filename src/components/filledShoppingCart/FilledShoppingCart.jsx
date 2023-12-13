@@ -2,7 +2,11 @@ import { useDispatch, useSelector } from "react-redux";
 import styles from "./FilledShoppingCart.module.css"
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { removeFromCart } from "../../store/slices/productSlice";
+import { decreaseCartItemQuantity, increaseCartItemQuantity, removeFromCart } from "../../store/slices/productSlice";
+import iconX from "../../assets/images/iconX.svg"
+import minus from "../../assets/images/minus.svg"
+import plus from "../../assets/images/plus.svg"
+
 
 function FilledShoppingCart(){
     const cartItems = useSelector((state) => state.products.cartItems);
@@ -18,6 +22,25 @@ function FilledShoppingCart(){
         dispatch(removeFromCart(id))
     }
 
+    
+
+    const increaseQuantity = (id) => {
+        dispatch(increaseCartItemQuantity(id));
+    };
+    
+    const decreaseQuantity = (id) => {
+        dispatch(decreaseCartItemQuantity(id));
+    };
+
+  
+
+    
+
+    const navigateProduct = useNavigate();
+
+  const handleProductClick = (id) => {
+    navigateProduct(`/products/${id}`);
+  };
 
     return (
         <div className={styles.filledShopping}>
@@ -31,16 +54,26 @@ function FilledShoppingCart(){
             {
                 cartItems.map((item) => (
                     <div key={item.id} className={styles.cartInfoDiv}>
-                        <img className={styles.cartImg} src={`http://localhost:3333${item.image}`} alt={item.title}/>
+                        <img className={styles.cartImg} 
+                        src={`http://localhost:3333${item.image}`} 
+                        alt={item.title} 
+                        onClick={() => handleProductClick(item.id)}
+                        />
                         <div>
                             <div className={styles.titleDltBtn}>
-                        <h3>{item.title}</h3>
-                        <button className={styles.deleteBtn} onClick={() => handleRemove(item.id)}>X</button>
+                        <p className={styles.title}>{item.title}</p>
+                        <button className={styles.deleteBtn} onClick={() => handleRemove(item.id)}><img src={iconX} alt="X"/></button>
                         </div>
-                        <div>
-                            <button>-</button>
-                            <span>1</span>
-                            <button>+</button>
+                        <div className={styles.priceBtnDiv}>
+                            <div className={styles.btnSpan}>
+                            <button className={styles.plusMinusBtn} 
+                            onClick={() => decreaseQuantity(item.id)}
+                            ><img src={minus} alt="-"/></button>
+                            <div className={styles.span}>{item.quantity}</div>
+                            <button className={styles.plusMinusBtn} 
+                            onClick={() => increaseQuantity(item.id)}
+                            ><img src={plus} alt="+"/></button>
+                            </div>
                             <p>${item.discont_price ? item.discont_price : item.price}</p>
                             {item.discont_price && ( <p>${item.price}</p>)}
                         </div>
