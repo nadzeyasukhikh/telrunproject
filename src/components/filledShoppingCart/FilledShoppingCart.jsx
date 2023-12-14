@@ -6,6 +6,7 @@ import { decreaseCartItemQuantity, increaseCartItemQuantity, removeFromCart } fr
 import iconX from "../../assets/images/iconX.svg"
 import minus from "../../assets/images/minus.svg"
 import plus from "../../assets/images/plus.svg"
+import OrderForm from "../orderForm/OrderForm";
 
 
 function FilledShoppingCart(){
@@ -79,6 +80,7 @@ function FilledShoppingCart(){
                             <p className={styles.productPrice}>${item.discont_price ? (item.discont_price * item.quantity).toFixed(2) : (item.price * item.quantity).toFixed(2)}</p>
                             {item.discont_price && ( <p className={styles.productDiscPrise}>${(item.price * item.quantity).toFixed(2)}</p>)}
                         </div>
+                       
                         </div>
                         
                     </div>
@@ -93,10 +95,12 @@ function FilledShoppingCart(){
                     <p className={styles.totlalText}>Total</p>
                 <p className={styles.totalPrice}>${totalPrice.toFixed(2).toString().replace('.', ',')}</p>
                 </div>
-                
+                <OrderForm />
 
             </div>
+           
             </div>
+            
         </div>
     )
 }
