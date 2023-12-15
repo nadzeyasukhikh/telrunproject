@@ -1,8 +1,10 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux"
 import { sendOrder, setShowModal } from "../../store/slices/orderSlice";
 import styles from "./OrderForm.module.css"
+import { clearCart } from "../../store/slices/productSlice";
+import modalBtn from "../../assets/images/modalBtn.svg"
 
 
 function OrderForm(){
@@ -23,13 +25,22 @@ function OrderForm(){
         dispatch(sendOrder(data));
         reset();
         setIsSubmitted(true);
+        
     };
+    const clearCartAndStorage = useCallback(() => {
+      dispatch(clearCart());
+      localStorage.removeItem('cartItems');
+  }, [dispatch]);
+
     useEffect(() => {
-        if (showModal) {
-            const timer = setTimeout(() => dispatch(setShowModal(false)),5000);
-            return () => clearTimeout(timer)
-        }
-    }, [showModal, dispatch])
+      if (showModal) {
+        const timer = setTimeout(() => {
+            dispatch(setShowModal(false));
+            clearCartAndStorage();
+        }, 5000);
+        return () => clearTimeout(timer);
+    }
+    }, [showModal, dispatch, clearCartAndStorage])
     return(
       <>
         <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
@@ -69,18 +80,23 @@ function OrderForm(){
             </p>
           )}
             <br/>
-            <button>{isSubmitted ? "Ordered" : "Order" }</button>
+            <button className={styles.orderBtn}>{isSubmitted ? "Ordered" : "Order" }</button>
         </form>
         <div>
           {showModal && (
             <div className={styles.modalDiv}>
-              <div>
-              <button onClick={() => dispatch(setShowModal(false))}>X</button>
-                <p>Congratulations! </p>
-                <p>
+              <div className={styles.modalWindow}>
+                <div className={styles.textBtn}>
+              <p className={styles.modalTitle}>Congratulations! </p>
+              <button className={styles.modalBtn} onClick={() => {dispatch(setShowModal(false)); clearCartAndStorage()}}>
+               <img src={modalBtn} alt="delete"/>
+              </button>
+              </div>
+                
+                <p className={styles.modalText}>
                 Your order has been successfully placed on the website.
                 </p>
-                <p>A manager will contact you shortly to confirm your order.</p>
+                <p className={styles.modalText}>A manager will contact you shortly to confirm your order.</p>
               </div>
             </div>
           )}
