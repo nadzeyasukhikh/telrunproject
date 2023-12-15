@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { addToCart, fetchProducts } from "../../store/slices/productSlice";
 import styles from "./SaleComponent.module.css";
 import { useNavigate } from "react-router-dom";
+import { calculateDiscountPercent } from "../utils/utils";
 
 function SaleComponent() {
   const dispatch = useDispatch();
@@ -114,6 +115,4 @@ function SaleComponent() {
 
 export default SaleComponent;
 
-const calculateDiscountPercent = (originalPrice, discountPrice) => {
-  return (((originalPrice - discountPrice) / originalPrice) * 100).toFixed(0);
-};
+

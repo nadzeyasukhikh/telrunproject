@@ -7,6 +7,8 @@ import MainPageBtn from "../../components/mainPageBtn/MainPageBtn";
 import downIcon from "../../assets/images/downIcon.svg";
 import upIcon from "../../assets/images/upIcon.png";
 import { addToCart } from "../../store/slices/productSlice";
+import { calculateDiscountPercent } from "../../components/utils/utils";
+import { sortProducts } from "../../components/utils/sortProducts";
 
 function CategoryProducts() {
   const { categoryId } = useParams();
@@ -26,6 +28,7 @@ function CategoryProducts() {
   const categories = useSelector((state) => state.categories.categories);
   const category = categories.find((cat) => cat.id === categoryIdNumber);
   const cartItems = useSelector((state) => state.products.cartItems);
+  const [filteredProducts, setFilteredProducts] = useState([]);
 
   const handleAddToCart = (product) => {
     dispatch(addToCart({ product, quantity: 1 }));
@@ -51,30 +54,22 @@ function CategoryProducts() {
     setMaxPrice(e.target.value);
   };
 
-  const filteredProducts =
-    products?.data ?
-    products.data
-      .filter((product) => {
-        const price = product.discont_price || product.price;
-        return (
-          (!showDiscounted || product.discont_price) &&
-          (!minPrice || price >= minPrice) &&
-          (!maxPrice || price <= maxPrice)
-        );
-      })
-      .sort((a, b) => {
-        switch (sorting) {
-          case "newest":
-            return new Date(b.created_at) - new Date(a.created_at);
-          case "highToLow":
-            return (b.discont_price || b.price) - (a.discont_price || a.price);
-          case "lowToHigh":
-            return (a.discont_price || a.price) - (b.discont_price || b.price);
-          default:
-            return 0;
-        }
-      })
-      : [];
+  useEffect(() => {
+    if (products?.data) {
+        let filteredProducts = products.data.filter((product) => {
+            const price = product.discont_price || product.price;
+            return (
+                (!showDiscounted || product.discont_price) &&
+                (!minPrice || price >= minPrice) &&
+                (!maxPrice || price <= maxPrice)
+            );
+        });
+
+        filteredProducts = sortProducts(filteredProducts, sorting);
+        setFilteredProducts(filteredProducts);
+    }
+}, [products, minPrice, maxPrice, showDiscounted, sorting]);
+  
   const handleSortingChange = (e) => {
     setSorting(e.target.value);
   };
@@ -188,6 +183,4 @@ function CategoryProducts() {
 }
 
 export default CategoryProducts;
-const calculateDiscountPercent = (originalPrice, discountPrice) => {
-  return (((originalPrice - discountPrice) / originalPrice) * 100).toFixed(0);
-};
+

@@ -6,6 +6,8 @@ import { addToCart, fetchProducts } from "../../store/slices/productSlice";
 import upIcon from "../../assets/images/upIcon.png";
 import downIcon from "../../assets/images/downIcon.svg";
 import { useNavigate } from "react-router-dom";
+import { calculateDiscountPercent } from "../../components/utils/utils";
+import { sortProducts } from "../../components/utils/sortProducts";
 
 
 function AllSales() {
@@ -34,12 +36,12 @@ function AllSales() {
   }, [dispatch]);
 
   useEffect(() => {
-    const discountedProducts = products.filter(
+    let discountedProducts = products.filter(
       (product) =>
         product.discont_price !== null && product.discont_price < product.price
     );
 
-    let updatedProducts = [...discountedProducts];
+    let updatedProducts = sortProducts(discountedProducts, sortValue);
 
     if (priceFrom !== "" || priceTo !== "") {
       updatedProducts = updatedProducts.filter((product) => {
@@ -51,21 +53,6 @@ function AllSales() {
       });
     }
 
-    switch (sortValue) {
-      case "newest":
-        updatedProducts.sort(
-          (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
-        );
-        break;
-      case "highToLow":
-        updatedProducts.sort((a, b) => b.discont_price - a.discont_price);
-        break;
-      case "lowToHigh":
-        updatedProducts.sort((a, b) => a.discont_price - b.discont_price);
-        break;
-      default:
-        break;
-    }
 
     setSaleProducts(updatedProducts);
   }, [priceFrom, priceTo, products, sortValue]);
@@ -138,7 +125,7 @@ function AllSales() {
                 >{isProductInCart(product.id) ? 'Added' : 'Add to Cart'}</button>
               <div className={styles.percentDiv}>
                 <p>
-                  -
+                  
                   {calculateDiscountPercent(
                     product.price,
                     product.discont_price
@@ -159,6 +146,4 @@ function AllSales() {
 }
 
 export default AllSales;
-const calculateDiscountPercent = (originalPrice, discountPrice) => {
-  return (((originalPrice - discountPrice) / originalPrice) * 100).toFixed(0);
-};
+

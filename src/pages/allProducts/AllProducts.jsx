@@ -7,6 +7,8 @@ import downIcon from "../../assets/images/downIcon.svg";
 import upIcon from "../../assets/images/upIcon.png";
 import { useNavigate } from "react-router-dom";
 import { addToCart } from "../../store/slices/productSlice";
+import { calculateDiscountPercent } from "../../components/utils/utils";
+import { sortProducts } from "../../components/utils/sortProducts";
 
 function AllProducts() {
   const dispatch = useDispatch();
@@ -41,7 +43,7 @@ function AllProducts() {
   }, [products]);
 
   useEffect(() => {
-    let updatedProducts = [...products];
+    let updatedProducts = sortProducts(products, sortValue);
   
     const fromPrice = priceFrom !== "" ? priceFrom : null;
     const toPrice = priceTo !== "" ? priceTo : null;
@@ -55,33 +57,8 @@ function AllProducts() {
       );
     });
   
-    
     if (showDiscounted) {
       updatedProducts = updatedProducts.filter(product => product.discont_price !== null);
-    }
-  
-    
-    switch (sortValue) {
-      case "newest":
-        updatedProducts.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
-        break;
-      case "highToLow":
-        updatedProducts.sort((a, b) => {
-          const priceA = a.discont_price !== null ? a.discont_price : a.price;
-          const priceB = b.discont_price !== null ? b.discont_price : b.price;
-          return priceB - priceA;
-        });
-        break;
-      case "lowToHigh":
-        updatedProducts.sort((a, b) => {
-          const priceA = a.discont_price !== null ? a.discont_price : a.price;
-          const priceB = b.discont_price !== null ? b.discont_price : b.price;
-          return priceA - priceB;
-        });
-        break;
-      default:
-        
-        break;
     }
   
     setDisplayedProducts(updatedProducts);
@@ -199,6 +176,4 @@ function AllProducts() {
 
 export default AllProducts;
 
-const calculateDiscountPercent = (discountPrice, originalPrice ) => {
-  return (((originalPrice - discountPrice) / originalPrice) * 100).toFixed(0);
-}
+
