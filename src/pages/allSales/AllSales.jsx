@@ -6,9 +6,8 @@ import { addToCart, fetchProducts } from "../../store/slices/productSlice";
 import upIcon from "../../assets/images/upIcon.png";
 import downIcon from "../../assets/images/downIcon.svg";
 import { useNavigate } from "react-router-dom";
-import { calculateDiscountPercent } from "../../components/utils/utils";
-import { sortProducts } from "../../components/utils/sortProducts";
-
+import { calculateDiscountPercent } from "../../utils/utils";
+import { sortProducts } from "../../utils/sortProducts";
 
 function AllSales() {
   const dispatch = useDispatch();
@@ -25,10 +24,10 @@ function AllSales() {
 
   const handleAddToCart = (product) => {
     dispatch(addToCart({ product, quantity: 1 }));
-}
-  
+  };
+
   const isProductInCart = (productId) => {
-    return cartItems.some(item => item.id === productId);
+    return cartItems.some((item) => item.id === productId);
   };
 
   useEffect(() => {
@@ -52,7 +51,6 @@ function AllSales() {
         );
       });
     }
-
 
     setSaleProducts(updatedProducts);
   }, [priceFrom, priceTo, products, sortValue]);
@@ -117,15 +115,19 @@ function AllSales() {
               <img
                 className={styles.saleImg}
                 src={`http://localhost:3333${product.image}`}
-                alt={product.title} 
+                alt={product.title}
                 onClick={() => handleProductClick(product.id)}
               />
-              <button className={`${styles.addToCartBtn} ${isProductInCart(product.id) ? styles.addedToCart : ''}`} 
+              <button
+                className={`${styles.addToCartBtn} ${
+                  isProductInCart(product.id) ? styles.addedToCart : ""
+                }`}
                 onClick={() => handleAddToCart(product)}
-                >{isProductInCart(product.id) ? 'Added' : 'Add to Cart'}</button>
+              >
+                {isProductInCart(product.id) ? "Added" : "Add to Cart"}
+              </button>
               <div className={styles.percentDiv}>
                 <p>
-                  
                   {calculateDiscountPercent(
                     product.price,
                     product.discont_price
@@ -146,4 +148,3 @@ function AllSales() {
 }
 
 export default AllSales;
-

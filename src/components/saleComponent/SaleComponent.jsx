@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { addToCart, fetchProducts } from "../../store/slices/productSlice";
 import styles from "./SaleComponent.module.css";
 import { useNavigate } from "react-router-dom";
-import { calculateDiscountPercent } from "../utils/utils";
+import { calculateDiscountPercent } from "../../utils/utils";
 
 function SaleComponent() {
   const dispatch = useDispatch();
@@ -51,10 +51,10 @@ function SaleComponent() {
 
   const handleAddToCart = (product) => {
     dispatch(addToCart({ product, quantity: 1 }));
-}
-  
+  };
+
   const isProductInCart = (productId) => {
-    return cartItems.some(item => item.id === productId);
+    return cartItems.some((item) => item.id === productId);
   };
 
   return (
@@ -87,9 +87,14 @@ function SaleComponent() {
                   alt={product.title}
                   onClick={() => handleProductClick(product.id)}
                 />
-                <button className={`${styles.addToCartBtn} ${isProductInCart(product.id) ? styles.addedToCart : ''}`} 
-                onClick={() => handleAddToCart(product)}
-                >{isProductInCart(product.id) ? 'Added' : 'Add to Cart'}</button>
+                <button
+                  className={`${styles.addToCartBtn} ${
+                    isProductInCart(product.id) ? styles.addedToCart : ""
+                  }`}
+                  onClick={() => handleAddToCart(product)}
+                >
+                  {isProductInCart(product.id) ? "Added" : "Add to Cart"}
+                </button>
                 <div className={styles.percentDiv}>
                   <p>
                     -
@@ -114,5 +119,3 @@ function SaleComponent() {
 }
 
 export default SaleComponent;
-
-

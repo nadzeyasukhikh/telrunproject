@@ -7,7 +7,7 @@ import MainPage from "../../components/mainPageBtn/MainPageBtn";
 import minus from "../../assets/images/minus.svg";
 import plus from "../../assets/images/plus.svg";
 import { fetchCategories } from "../../store/slices/categoriesSlice";
-import { calculateDiscountPercent } from "../../components/utils/utils";
+import { calculateDiscountPercent } from "../../utils/utils";
 
 function ProductCard() {
   const { id: stringId } = useParams();
@@ -125,7 +125,6 @@ function ProductCard() {
                   {products.discont_price && (
                     <div className={styles.percentDiv}>
                       <p className={styles.percentText}>
-                        
                         {calculateDiscountPercent(
                           products.price,
                           products.discont_price
@@ -183,4 +182,3 @@ function ProductCard() {
 }
 
 export default ProductCard;
-

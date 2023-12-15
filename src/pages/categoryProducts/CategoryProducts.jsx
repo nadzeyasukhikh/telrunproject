@@ -7,8 +7,8 @@ import MainPageBtn from "../../components/mainPageBtn/MainPageBtn";
 import downIcon from "../../assets/images/downIcon.svg";
 import upIcon from "../../assets/images/upIcon.png";
 import { addToCart } from "../../store/slices/productSlice";
-import { calculateDiscountPercent } from "../../components/utils/utils";
-import { sortProducts } from "../../components/utils/sortProducts";
+import { calculateDiscountPercent } from "../../utils/utils";
+import { sortProducts } from "../../utils/sortProducts";
 
 function CategoryProducts() {
   const { categoryId } = useParams();
@@ -24,7 +24,7 @@ function CategoryProducts() {
   const [showDiscounted, setShowDiscounted] = useState(false);
   const [sorting, setSorting] = useState("byDefault");
 
-  const categoryIdNumber = parseInt(categoryId, 10); 
+  const categoryIdNumber = parseInt(categoryId, 10);
   const categories = useSelector((state) => state.categories.categories);
   const category = categories.find((cat) => cat.id === categoryIdNumber);
   const cartItems = useSelector((state) => state.products.cartItems);
@@ -32,10 +32,10 @@ function CategoryProducts() {
 
   const handleAddToCart = (product) => {
     dispatch(addToCart({ product, quantity: 1 }));
-}
-  
+  };
+
   const isProductInCart = (productId) => {
-    return cartItems.some(item => item.id === productId);
+    return cartItems.some((item) => item.id === productId);
   };
 
   useEffect(() => {
@@ -56,20 +56,20 @@ function CategoryProducts() {
 
   useEffect(() => {
     if (products?.data) {
-        let filteredProducts = products.data.filter((product) => {
-            const price = product.discont_price || product.price;
-            return (
-                (!showDiscounted || product.discont_price) &&
-                (!minPrice || price >= minPrice) &&
-                (!maxPrice || price <= maxPrice)
-            );
-        });
+      let filteredProducts = products.data.filter((product) => {
+        const price = product.discont_price || product.price;
+        return (
+          (!showDiscounted || product.discont_price) &&
+          (!minPrice || price >= minPrice) &&
+          (!maxPrice || price <= maxPrice)
+        );
+      });
 
-        filteredProducts = sortProducts(filteredProducts, sorting);
-        setFilteredProducts(filteredProducts);
+      filteredProducts = sortProducts(filteredProducts, sorting);
+      setFilteredProducts(filteredProducts);
     }
-}, [products, minPrice, maxPrice, showDiscounted, sorting]);
-  
+  }, [products, minPrice, maxPrice, showDiscounted, sorting]);
+
   const handleSortingChange = (e) => {
     setSorting(e.target.value);
   };
@@ -143,44 +143,52 @@ function CategoryProducts() {
         {status === "loading" && <p className={styles.loading}>Loading...</p>}
         {status === "succeeded" &&
           products &&
-          filteredProducts.map((product) => 
-            
-             (
-              <div className={styles.productCard} key={product.id}>
-                <img
-                  className={styles.productImg}
-                  src={`http://localhost:3333${product.image}`}
-                  alt={product.title} 
-                  onClick={() => handleProductClick(product.id)}
-                />
-                {product.discont_price && (
-                  <div className={styles.discountText}>
-                  <p>{calculateDiscountPercent(product.discont_price, product.price)}%</p>
-                </div>
-                )}
-                <button className={`${styles.addToCartBtn} ${isProductInCart(product.id) ? styles.addedToCart : ''}`} 
-                onClick={() => handleAddToCart(product)}
-                >{isProductInCart(product.id) ? 'Added' : 'Add to Cart'}</button>
-                <div className={styles.productTitlePrice}>
-                  <h3 className={styles.productName}>{product.title}</h3>
-                  <div className={styles.priceDscPriceDiv}>
-                    <p className={styles.price}>
-                      {product.discont_price
-                        ? "$" + product.discont_price
-                        : "$" + product.price}
-                    </p>
-                    {product.discont_price && (
-                      <p className={styles.discountPrice}>${product.price}</p>
+          filteredProducts.map((product) => (
+            <div className={styles.productCard} key={product.id}>
+              <img
+                className={styles.productImg}
+                src={`http://localhost:3333${product.image}`}
+                alt={product.title}
+                onClick={() => handleProductClick(product.id)}
+              />
+              {product.discont_price && (
+                <div className={styles.discountText}>
+                  <p>
+                    -
+                    {calculateDiscountPercent(
+                      product.discont_price,
+                      product.price
                     )}
-                  </div>
+                    %
+                  </p>
+                </div>
+              )}
+              <button
+                className={`${styles.addToCartBtn} ${
+                  isProductInCart(product.id) ? styles.addedToCart : ""
+                }`}
+                onClick={() => handleAddToCart(product)}
+              >
+                {isProductInCart(product.id) ? "Added" : "Add to Cart"}
+              </button>
+              <div className={styles.productTitlePrice}>
+                <h3 className={styles.productName}>{product.title}</h3>
+                <div className={styles.priceDscPriceDiv}>
+                  <p className={styles.price}>
+                    {product.discont_price
+                      ? "$" + product.discont_price
+                      : "$" + product.price}
+                  </p>
+                  {product.discont_price && (
+                    <p className={styles.discountPrice}>${product.price}</p>
+                  )}
                 </div>
               </div>
-            )
-          )}
+            </div>
+          ))}
       </div>
     </div>
   );
 }
 
 export default CategoryProducts;
-

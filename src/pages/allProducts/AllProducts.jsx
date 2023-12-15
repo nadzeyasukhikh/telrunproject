@@ -7,8 +7,8 @@ import downIcon from "../../assets/images/downIcon.svg";
 import upIcon from "../../assets/images/upIcon.png";
 import { useNavigate } from "react-router-dom";
 import { addToCart } from "../../store/slices/productSlice";
-import { calculateDiscountPercent } from "../../components/utils/utils";
-import { sortProducts } from "../../components/utils/sortProducts";
+import { calculateDiscountPercent } from "../../utils/utils";
+import { sortProducts } from "../../utils/sortProducts";
 
 function AllProducts() {
   const dispatch = useDispatch();
@@ -26,12 +26,12 @@ function AllProducts() {
   const handleAddToCart = (productId) => {
     const product = products.find((p) => p.id === productId);
     if (product) {
-        dispatch(addToCart({ product, quantity: 1 })); 
+      dispatch(addToCart({ product, quantity: 1 }));
     }
-};
-  
+  };
+
   const isProductInCart = (productId) => {
-    return cartItems.some(item => item.id === productId);
+    return cartItems.some((item) => item.id === productId);
   };
 
   useEffect(() => {
@@ -44,27 +44,28 @@ function AllProducts() {
 
   useEffect(() => {
     let updatedProducts = sortProducts(products, sortValue);
-  
+
     const fromPrice = priceFrom !== "" ? priceFrom : null;
     const toPrice = priceTo !== "" ? priceTo : null;
-  
-    
+
     updatedProducts = updatedProducts.filter((product) => {
-      const effectivePrice = product.discont_price !== null ? product.discont_price : product.price;
+      const effectivePrice =
+        product.discont_price !== null ? product.discont_price : product.price;
       return (
         (fromPrice === null || effectivePrice >= fromPrice) &&
         (toPrice === null || effectivePrice <= toPrice)
       );
     });
-  
+
     if (showDiscounted) {
-      updatedProducts = updatedProducts.filter(product => product.discont_price !== null);
+      updatedProducts = updatedProducts.filter(
+        (product) => product.discont_price !== null
+      );
     }
-  
+
     setDisplayedProducts(updatedProducts);
   }, [priceFrom, priceTo, showDiscounted, products, sortValue]);
 
-  
   function handleSortChange(event) {
     setSortValue(event.target.value);
   }
@@ -134,46 +135,51 @@ function AllProducts() {
         {status === "loading" && <p className={styles.loading}>Loading...</p>}
         {status === "succeeded" &&
           displayedProducts.map((product) => (
-              <div className={styles.productCard} key={product.id}>
-                <img
-                  className={styles.productImg}
-                  src={`http://localhost:3333${product.image}`}
-                  alt={product.title} 
-                  onClick={() => handleProductClick(product.id)}
-                />
-                {product.discont_price && (
+            <div className={styles.productCard} key={product.id}>
+              <img
+                className={styles.productImg}
+                src={`http://localhost:3333${product.image}`}
+                alt={product.title}
+                onClick={() => handleProductClick(product.id)}
+              />
+              {product.discont_price && (
                 <div className={styles.discountText}>
-                  <p>-{calculateDiscountPercent(product.discont_price, product.price)}%</p>
-                </div>
-                )}
-                <button className={`${styles.addToCartBtn} ${isProductInCart(product.id) ? styles.addedToCart : ''}`} 
-                onClick={() => handleAddToCart(product.id)}
-                >{isProductInCart(product.id) ? 'Added' : 'Add to Cart'}</button>
-                <div className={styles.productTitlePrice}>
-                  <h3 className={styles.productName}>{product.title}</h3>
-                  <div className={styles.priceDscPriceDiv}>
-                    <p className={styles.price}>
-                      {product.discont_price
-                        ? "$" + product.discont_price
-                        : "$" + product.price}
-                    </p>
-                    {product.discont_price && (
-                      <p className={styles.discountPrice}>${product.price}</p>
+                  <p>
+                    -
+                    {calculateDiscountPercent(
+                      product.discont_price,
+                      product.price
                     )}
-                  </div>
+                    %
+                  </p>
+                </div>
+              )}
+              <button
+                className={`${styles.addToCartBtn} ${
+                  isProductInCart(product.id) ? styles.addedToCart : ""
+                }`}
+                onClick={() => handleAddToCart(product.id)}
+              >
+                {isProductInCart(product.id) ? "Added" : "Add to Cart"}
+              </button>
+              <div className={styles.productTitlePrice}>
+                <h3 className={styles.productName}>{product.title}</h3>
+                <div className={styles.priceDscPriceDiv}>
+                  <p className={styles.price}>
+                    {product.discont_price
+                      ? "$" + product.discont_price
+                      : "$" + product.price}
+                  </p>
+                  {product.discont_price && (
+                    <p className={styles.discountPrice}>${product.price}</p>
+                  )}
                 </div>
               </div>
+            </div>
           ))}
-               </div>
-               </div>
-            
-          
-                    
-              
+      </div>
+    </div>
   );
-  }
-
+}
 
 export default AllProducts;
-
-
