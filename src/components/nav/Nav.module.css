@@ -1,8 +1,9 @@
 .nav{
+    position: relative;
     display: flex;
     justify-content: space-between;
     padding: 30px 40px;
-    border-bottom: 1px solid var(--grey-divider, #DDD);
+    border-bottom: 1px solid  #DDD;
 }
 .link{
     display: flex;
@@ -39,4 +40,114 @@
     top: 35px;
    padding: 4px;
    color: white;
+}
+.menuButton {
+    display: none;
+    border: none;
+    background: none;
+    font-size: 24px;
+    cursor: pointer;
+}
+.menuDeleteBtn{
+    display: none;
+}
+
+@media (max-width: 1000px) {
+    .nav {
+        padding: 20px 30px;
+    }
+    .link {
+        gap: 20px;
+    }
+    .image {
+        width: 60px;
+        height: 60px;
+    }
+    .btnImg {
+        width: 40px;
+        height: 40px;
+    }
+    .count {
+        top: 30px;
+        width: 22px;
+        height: 22px;
+        padding: 3px;
+    }
+    
+}
+
+@media (max-width: 768px) {
+    .nav {
+       padding: 10px 20px;
+    }
+    .link {
+        gap: 15px;
+    }
+    .btn {
+        margin-top: 10px;
+    }
+    
+}
+@media (max-width: 480px) {
+    .nav {
+        padding: 12px 30px;
+        padding-right: 40px;
+        align-items: center;
+     }
+    .menuButton {
+        display: block;
+        font-size: 44px;
+        color: #282828;
+    }
+    .menuBarBtn{
+        display: flex;
+        gap: 20px;
+        align-items: center;
+        
+    }
+    .count{
+        width: 17px;
+        height: 17px;
+        padding: 1px;
+    }
+    .btnImg{
+        width: 32px;
+        height: 32px;
+    }
+    .link {
+        display: none;
+        
+    }
+    
+    .link.active {
+        position: fixed;
+       left: 220px;
+       top: 0;
+       height: 100%;
+       width: 60%;
+       z-index: 2;
+        display: flex; 
+        flex-direction: column;
+        gap: 36px;
+        background-color: #fff;
+        padding-left: 15px;
+        
+    }
+    .menuDeleteBtn{
+        display: block;
+        width: 44px;
+        height: 44px;
+        font-size: 30px;
+        border: none;
+        margin-left: 160px;
+        color: #282828;
+    }
+    .image{
+        width: 44px;
+        height: 44px;  
+       
+    }
+    .linkstyle{
+        margin-right: 10px;
+    }
 }

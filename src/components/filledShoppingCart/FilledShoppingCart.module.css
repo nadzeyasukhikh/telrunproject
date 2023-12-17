@@ -123,20 +123,16 @@
 .productPrice {
     margin-left: 32px;
     margin-top: 32px;
-    color: var(--txt-black, #282828);
-    font-family: Montserrat;
+    color:  #282828;
     font-size: 40px;
-    font-style: normal;
     font-weight: 600;
 }
 
 .productDiscPrise {
     margin-left: 16px;
     margin-top: 48px;
-    color: var(--txt-grey, #8B8B8B);
-    font-family: Montserrat;
+    color:  #8B8B8B;
     font-size: 20px;
-    font-style: normal;
     font-weight: 500;
     text-decoration-line: line-through;
 }

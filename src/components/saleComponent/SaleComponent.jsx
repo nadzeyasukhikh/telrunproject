@@ -97,7 +97,7 @@ function SaleComponent() {
                 </button>
                 <div className={styles.percentDiv}>
                   <p>
-                    -
+                    
                     {calculateDiscountPercent(
                       product.price,
                       product.discont_price
