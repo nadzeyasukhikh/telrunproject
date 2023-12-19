@@ -9,7 +9,7 @@ import { useState } from "react";
 
 function Nav() {
   const navigate = useNavigate()
-  const shoppingCartNavigate = useNavigate()
+  
   const cartItems = useSelector((state) => state.products.cartItems);
   const cartItemCount = new Set(cartItems.map(item => item.id)).size;
   const [menuOpen, setMenuOpen] = useState(false);
@@ -35,7 +35,7 @@ function Nav() {
       
       <div className={styles.menuBarBtn}>
       
-        <button className={styles.btn} onClick={() => {shoppingCartNavigate("/shoppingCart/:id")}}>
+        <button className={styles.btn} onClick={() => {navigate("/shoppingCart/:id")}}>
           <img className={styles.btnImg} src={backet} alt="Basket"/>
           <div className={styles.count}><span>{isNaN(cartItemCount) ? 0 : cartItemCount}</span></div>
         </button>

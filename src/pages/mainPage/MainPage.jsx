@@ -22,7 +22,7 @@ function MainPage() {
     backgroundRepeat: "no-repeat",
     backgroundSize: "cover",
   };
-  const navigateMain = useNavigate();
+  
   const saleComponentRef = useRef(null);
 
   const scrollToSaleComponent = () => {
@@ -50,7 +50,7 @@ function MainPage() {
         <button
           className={styles.categoriesBtn}
           onClick={() => {
-            navigateMain("/categories");
+            navigate("/categories");
           }}
         >
           All categories{" "}

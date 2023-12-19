@@ -13,13 +13,6 @@ import plus from "../../assets/images/plus.svg";
 import OrderForm from "../orderForm/OrderForm";
 
 function FilledShoppingCart() {
-  const cartItems = useSelector((state) => state.products.cartItems);
-
-  useEffect(() => {
-    localStorage.setItem("cartItems", JSON.stringify(cartItems));
-  }, [cartItems]);
-
-  const navigate = useNavigate();
   const dispatch = useDispatch();
 
   const handleRemove = (id) => {
@@ -33,15 +26,24 @@ function FilledShoppingCart() {
   const decreaseQuantity = (id) => {
     dispatch(decreaseCartItemQuantity(id));
   };
+  const cartItems = useSelector((state) => state.products.cartItems);
+
+  useEffect(() => {
+    localStorage.setItem("cartItems", JSON.stringify(cartItems));
+  }, [cartItems]);
+
+  const navigate = useNavigate();
+  
+
+  
 
   const totalPrice = cartItems.reduce((total, item) => {
     return total + (item.discont_price || item.price) * item.quantity;
   }, 0);
 
-  const navigateProduct = useNavigate();
 
   const handleProductClick = (id) => {
-    navigateProduct(`/products/${id}`);
+    navigate(`/products/${id}`);
   };
 
   return (

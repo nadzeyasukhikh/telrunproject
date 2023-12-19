@@ -4,7 +4,7 @@ import styles from "./EmptyShoppingCart.module.css"
 function EmptyShoppingCart(){
 
     const navigate = useNavigate();
-    const navigateToShop = useNavigate()
+    
     return (
         <div className={styles.emptyDiv}>
             <div className={styles.titleBtn}>
@@ -13,7 +13,7 @@ function EmptyShoppingCart(){
             <button className={styles.storeBtn} onClick={() => navigate("/")}>Back to the store</button>
             </div>
             <p className={styles.emptyText}>Looks like you have no items in your basket currently.</p>
-            <button className={styles.emptyBtn} onClick={() => navigateToShop("/allProducts")}>Continue Shopping</button>
+            <button className={styles.emptyBtn} onClick={() => navigate("/allProducts")}>Continue Shopping</button>
         </div>
     )
 }

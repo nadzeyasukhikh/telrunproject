@@ -137,3 +137,166 @@ transition: 0.5s;
         transform: translate(-50%, -50%);
     }
 }
+@media(max-width: 1000px){
+    .discDiv{
+        position: relative;
+        margin: 60px 20px;
+        width: 960px;
+        height: 434px;
+    }
+    .formImage{
+        position: absolute;
+        bottom: -33px;
+        left: -10px;
+        width: 500px;
+        height: 308px;
+        z-index: 2;
+    }
+    .form{
+    position: relative;
+    top: -30px;
+    width: 100%;
+    margin-left: 52%;
+        margin-bottom: 30px;
+    }
+    .form input{
+        
+        width: 450px;
+        height: 58px;
+        margin-bottom: 16px;
+    }
+    .discountBtn{
+        margin-top: 10px;
+        width: 450px;
+        height: 58px;
+    }
+    .errorName{
+        position: absolute;
+        top: 89px;
+        
+    }
+    .errorPhone{
+        position: absolute;
+        top: 164px;
+       
+    }
+    .errorEmail{
+        position: absolute;
+        top: 240px;
+       
+    }
+    .submittedDiscountBtn{
+        position: absolute;
+        width: 450px;
+        top: 235px;
+    }
+    .modal {
+        position: absolute; 
+        top: 50%;
+        left: 50%;
+        
+    }
+    
+}
+@media(max-width: 768px){
+    .discDiv{
+        width: 730px;
+    }
+    .title{
+        font-size: 56px;
+    }
+    .formImage{
+        width: 340px;
+        bottom: -72px;
+        left: -8px;
+    }
+    .form input{
+        width: 294px;
+    }
+    .discountBtn{
+        width: 294px;
+    }
+    .submittedDiscountBtn{
+        width: 294px;
+    }
+}
+@media(max-width: 480px){
+    .discDiv{
+        width: 440px;
+        height: 590px;
+        margin: 56px 20px;
+       
+    }
+    .title{
+        padding-top: 24px;
+        font-size: 48px;
+    }
+    .form input{
+        position: relative;
+        width: 400px;
+        margin-bottom: 8px;
+        height: 47px;
+        font-size: 18px;
+    }
+    .form{
+        position: absolute;
+        top: 120px;
+        right: -20px;
+    }
+    .discountBtn{
+        width: 400px;
+    }
+    .submittedDiscountBtn{
+        width: 400px;
+        margin-top: -10px;
+    }
+    .errorName{
+        font-size: 10px;
+        top: 75px;
+        position: absolute;
+    }
+    .errorPhone{
+        position: absolute;
+        font-size: 10px;
+        top: 134px;
+       z-index: 20;
+    }
+    .errorEmail{
+        position: absolute;
+        top: 190px;
+        font-size: 10px;
+    }
+    .formImage{
+        width: 400px;
+        height: 200px;
+        left: 22px;
+        top: 393px;
+    }
+}
+@media(max-width: 360px){
+    .discDiv{
+        width: 320px;
+    }
+    .title{
+        font-size: 40px;
+    }
+    .form input{
+        position: relative;
+        width: 284px;
+}
+.discountBtn{
+    width: 284px;
+}
+.submittedDiscountBtn{
+    width: 284px;
+}
+.modal{
+    width: 300px;
+}
+.formImage{
+    width: 310px;
+    height: 232px;
+    left: 8px;
+        top: 398px;
+}
+}

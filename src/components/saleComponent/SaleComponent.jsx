@@ -42,11 +42,11 @@ function SaleComponent() {
     }
   }, [saleProducts]);
 
-  const navigateSale = useNavigate();
-  const navigateProduct = useNavigate();
+  const navigate = useNavigate();
+  
 
   const handleProductClick = (id) => {
-    navigateProduct(`/products/${id}`);
+    navigate(`/products/${id}`);
   };
 
   const handleAddToCart = (product) => {
@@ -65,7 +65,7 @@ function SaleComponent() {
         <button
           className={styles.componentBtn}
           onClick={() => {
-            navigateSale("/allSales");
+            navigate("/allSales");
           }}
         >
           All sales

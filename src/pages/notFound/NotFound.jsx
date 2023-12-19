@@ -2,12 +2,8 @@ import { useNavigate } from "react-router-dom"
 import notFound from "../../assets/images/404.svg"
 import styles from "./NotFound.module.css"
 
-
-
-
 function NotFound(){
     const navigateNotFound = useNavigate()
-
 
     return(
         <div className={styles.notFoundDiv}>

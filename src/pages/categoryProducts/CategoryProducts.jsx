@@ -30,6 +30,11 @@ function CategoryProducts() {
   const cartItems = useSelector((state) => state.products.cartItems);
   const [filteredProducts, setFilteredProducts] = useState([]);
 
+
+  useEffect(() => {
+    dispatch(fetchProductsByCategory(categoryId));
+  }, [categoryId, dispatch]);
+  
   const handleAddToCart = (product) => {
     dispatch(addToCart({ product, quantity: 1 }));
   };
@@ -38,9 +43,7 @@ function CategoryProducts() {
     return cartItems.some((item) => item.id === productId);
   };
 
-  useEffect(() => {
-    dispatch(fetchProductsByCategory(categoryId));
-  }, [categoryId, dispatch]);
+ 
 
   const toggleSelect = () => {
     setIsSelectOpen(!isSelectOpen);

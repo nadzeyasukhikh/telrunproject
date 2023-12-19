@@ -9,6 +9,14 @@ function DiscountForm() {
   const dispatch = useDispatch();
   const showModal = useSelector((state) => state.sale.showModal);
 
+
+  const onSubmit = (data) => {
+    dispatch(sendSaleData(data));
+    reset();
+    setIsSubmitted(true);
+  };
+
+  
   const {
     register,
     handleSubmit,
@@ -17,11 +25,7 @@ function DiscountForm() {
   } = useForm();
   const [isSubmitted, setIsSubmitted] = useState(false);
 
-  const onSubmit = (data) => {
-    dispatch(sendSaleData(data));
-    reset();
-    setIsSubmitted(true);
-  };
+  
 
   useEffect(() => {
     if (showModal) {
@@ -34,13 +38,14 @@ function DiscountForm() {
     <div className={styles.discDiv}>
       <p className={styles.title}>5% off on the first order</p>
       <div className={styles.imgForm}>
-        <img src={icon} alt="icon" />
+        <img className={styles.formImage} src={icon} alt="icon" />
         <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
           <input
             type="text"
             placeholder="Name"
             {...register("name", { required: true })}
-            className={errors.name ? styles.inputError : ""}
+            className={errors.name ? styles.inputError : ""} 
+            disabled={isSubmitted}
           />
           {errors.name && (
             <p className={`${styles.error} ${styles.errorName}`}>
@@ -52,7 +57,8 @@ function DiscountForm() {
             type="text"
             placeholder="Phone number"
             {...register("phone", { required: true, pattern: /^\+\d+$/ })}
-            className={errors.phone ? styles.inputError : ""}
+            className={errors.phone ? styles.inputError : ""} 
+            disabled={isSubmitted}
           />
           {errors.phone && (
             <p className={`${styles.error} ${styles.errorPhone}`}>
@@ -64,7 +70,8 @@ function DiscountForm() {
             type="text"
             placeholder="Email"
             {...register("email", { required: true, pattern: /^\S+@\S+$/i })}
-            className={errors.email ? styles.inputError : ""}
+            className={errors.email ? styles.inputError : ""} 
+            disabled={isSubmitted}
           />
           {errors.email && (
             <p className={`${styles.error} ${styles.errorEmail}`}>
@@ -76,8 +83,10 @@ function DiscountForm() {
             className={
               isSubmitted ? styles.submittedDiscountBtn : styles.discountBtn
             }
+            disabled={isSubmitted}
           >
-            {isSubmitted ? "Request Submitted" : "Get a discount"}
+            {isSubmitted ? "Request Submitted" : "Get a discount"} 
+             
           </button>
         </form>
       </div>

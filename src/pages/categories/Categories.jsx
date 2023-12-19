@@ -18,7 +18,7 @@ function Categories() {
     
   }, [ dispatch]);
 
-  const navigateCategories = useNavigate();
+ 
 
   const navigate = useNavigate();
 
@@ -33,7 +33,7 @@ function Categories() {
         <button
           className={styles.categoriesBtn}
           onClick={() => {
-            navigateCategories("/categories");
+            navigate("/categories");
           }}
         >
           Categories

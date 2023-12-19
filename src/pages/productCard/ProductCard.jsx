@@ -27,6 +27,7 @@ function ProductCard() {
 
   useEffect(() => {
     dispatch(fetchProducts());
+   
   }, [dispatch]);
 
   useEffect(() => {
@@ -40,7 +41,7 @@ function ProductCard() {
       navigate(`/category/${product.categoryId}`);
     }
   };
-  const navigateToCategories = useNavigate();
+ 
 
   const handleAddToCart = () => {
     dispatch(addToCart({ product: products, quantity }));
@@ -91,7 +92,7 @@ function ProductCard() {
             <button
               className={styles.categoriesBtn}
               onClick={() => {
-                navigateToCategories("/categories");
+                navigate("/categories");
               }}
             >
               Categories
