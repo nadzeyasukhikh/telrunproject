@@ -88,6 +88,7 @@
 .modalBtn {
     background: #393;
     border: none;
+    cursor: pointer;
 }
 
 .modalTitle {

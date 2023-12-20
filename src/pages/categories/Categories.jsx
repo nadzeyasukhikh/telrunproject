@@ -4,6 +4,7 @@ import { fetchCategories } from "../../store/slices/categoriesSlice";
 import styles from "./Categories.module.css";
 import { useNavigate } from "react-router-dom";
 import MainPageBtn from "../../components/mainPageBtn/MainPageBtn";
+import { setDocumentTitle } from "../../utils/setDocumentTitle";
 
 function Categories() {
   
@@ -13,6 +14,7 @@ function Categories() {
 
 
   useEffect(() => {
+    setDocumentTitle("category")
     
       dispatch(fetchCategories());
     

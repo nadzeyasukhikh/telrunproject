@@ -8,6 +8,7 @@ import downIcon from "../../assets/images/downIcon.svg";
 import { useNavigate } from "react-router-dom";
 import { calculateDiscountPercent } from "../../utils/utils";
 import { sortProducts } from "../../utils/sortProducts";
+import { setDocumentTitle } from "../../utils/setDocumentTitle";
 
 function AllSales() {
   const dispatch = useDispatch();
@@ -31,6 +32,7 @@ function AllSales() {
   };
 
   useEffect(() => {
+    setDocumentTitle("sale")
     dispatch(fetchProducts());
   }, [dispatch]);
 

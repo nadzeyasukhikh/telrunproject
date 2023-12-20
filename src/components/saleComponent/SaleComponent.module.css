@@ -25,9 +25,7 @@ border-radius: 6px;
 border: 1px solid #DDD;
 color:  #8B8B8B;
 text-align: center;
-font-family: Montserrat;
 font-size: 16px;
-font-style: normal;
 font-weight: 500;
 white-space: nowrap;
 cursor: pointer;
@@ -151,4 +149,128 @@ font-weight: 600;
     font-weight: 500;
     margin-top: 16px;
     text-decoration: line-through;
+}
+@media(max-width: 1000px){
+    .saleComponent{
+        padding: 40px 20px;
+    }
+    .saleDiv{
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 20px;
+    }
+    .product{
+        width: 225px;
+        height: 400px;
+    }
+    .saleImg{
+        width: 225px;
+        height: 250px;
+    }
+    .addToCartBtn{
+        width: 190px;
+    }
+}
+@media(max-width: 768px){
+    .componentTitle{
+        font-size: 56px;
+    }
+    .saleDiv{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+    }
+    .product{
+        width: 354px;
+        height: 400px;
+    }
+    .saleImg{
+        width: 354px;
+        height: 250px;
+        
+    }
+    .addToCartBtn{
+        width: 290px;
+        margin-left: 30px;
+        margin-bottom: 15px;
+    }
+}
+@media(max-width: 480px){
+    .saleComponent{
+        padding: 26px 20px;
+    }
+    .componentTitle{
+        font-size: 48px;
+    }
+    .componentBtn {
+        width: 89px;
+        font-size: 16px;
+    }
+    .updateBtn{
+        width: 89px;
+        font-size: 16px; 
+    }
+    .saleImg{
+        width: 210px;
+        height: 220px;
+        
+    }
+    .product{
+        width: 210px;
+        height: 350px;
+    }
+    .addToCartBtn{
+        width: 150px;
+        margin-bottom: 10px;
+        font-size: 16px;
+        white-space: nowrap;
+    }
+    .dscPrice{
+        font-size: 36px;
+    }
+    .originalPrice{
+        font-size: 18px;
+    }
+}
+@media(max-width: 360px){
+    .componentBar{
+        display: none;
+    }
+    .saleComponent{
+        position: relative;
+    }
+    .componentTitle{
+        font-size: 40px;
+        padding: 10px 20px;
+    }
+    .updateBtn{
+        width: 57px;
+        font-size: 10px; 
+        padding: 5px 8px;
+    }
+    .saleDiv{
+        display: grid;
+        grid-template-columns: 1fr ;
+        gap: 20px;
+    }
+    .saleImg{
+        width: 320px;
+        height: 220px;
+        
+    }
+    .product{
+        width:320px;
+        height: 350px;
+    }
+    .addToCartBtn{
+        width: 260px;
+    }
+    .componentBtn{
+        position: absolute;
+        width: 60px;
+        font-size: 10px; 
+        padding: 5px 8px; 
+        bottom: -25px;
+        left: 150px;
+    }
 }

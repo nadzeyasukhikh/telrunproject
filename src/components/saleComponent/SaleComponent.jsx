@@ -15,7 +15,7 @@ function SaleComponent() {
 
   function selectRandomProducts(products) {
     let shuffled = [...products].sort(() => 0.5 - Math.random());
-    return shuffled.slice(0, 5);
+    return shuffled.slice(0, 4);
   }
   const updateSelectedProducts = () => {
     if (saleProducts.length > 0) {
@@ -71,7 +71,7 @@ function SaleComponent() {
           All sales
         </button>
       </div>
-      <div>
+      
         <button className={styles.updateBtn} onClick={updateSelectedProducts}>
           update
         </button>
@@ -113,7 +113,7 @@ function SaleComponent() {
               </div>
             ))}
         </div>
-      </div>
+      
     </div>
   );
 }

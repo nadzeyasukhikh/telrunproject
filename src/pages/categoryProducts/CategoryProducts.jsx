@@ -9,6 +9,7 @@ import upIcon from "../../assets/images/upIcon.png";
 import { addToCart } from "../../store/slices/productSlice";
 import { calculateDiscountPercent } from "../../utils/utils";
 import { sortProducts } from "../../utils/sortProducts";
+import { setDocumentTitle } from "../../utils/setDocumentTitle";
 
 function CategoryProducts() {
   const { categoryId } = useParams();
@@ -32,9 +33,10 @@ function CategoryProducts() {
 
 
   useEffect(() => {
+    setDocumentTitle("categoriesProduct")
     dispatch(fetchProductsByCategory(categoryId));
   }, [categoryId, dispatch]);
-  
+
   const handleAddToCart = (product) => {
     dispatch(addToCart({ product, quantity: 1 }));
   };

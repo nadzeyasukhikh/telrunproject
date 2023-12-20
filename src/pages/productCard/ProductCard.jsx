@@ -8,6 +8,7 @@ import minus from "../../assets/images/minus.svg";
 import plus from "../../assets/images/plus.svg";
 import { fetchCategories } from "../../store/slices/categoriesSlice";
 import { calculateDiscountPercent } from "../../utils/utils";
+import { setDocumentTitle } from "../../utils/setDocumentTitle";
 
 function ProductCard() {
   const { id: stringId } = useParams();
@@ -26,6 +27,7 @@ function ProductCard() {
   };
 
   useEffect(() => {
+    setDocumentTitle("productCart")
     dispatch(fetchProducts());
    
   }, [dispatch]);

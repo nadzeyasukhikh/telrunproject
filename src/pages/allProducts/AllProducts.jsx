@@ -9,6 +9,7 @@ import { useNavigate } from "react-router-dom";
 import { addToCart } from "../../store/slices/productSlice";
 import { calculateDiscountPercent } from "../../utils/utils";
 import { sortProducts } from "../../utils/sortProducts";
+import { setDocumentTitle } from "../../utils/setDocumentTitle";
 
 function AllProducts() {
   const dispatch = useDispatch();
@@ -35,6 +36,7 @@ function AllProducts() {
   };
 
   useEffect(() => {
+    setDocumentTitle("product")
     dispatch(fetchProducts());
   }, [dispatch]);
 

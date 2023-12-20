@@ -6,6 +6,7 @@ import { useEffect, useRef } from "react";
 import { fetchCategories } from "../../store/slices/categoriesSlice";
 import DiscountForm from "../../components/discountForm/DiscountForm";
 import SaleComponent from "../../components/saleComponent/SaleComponent";
+import { setDocumentTitle } from "../../utils/setDocumentTitle";
 
 function MainPage() {
   const dispatch = useDispatch();
@@ -13,6 +14,7 @@ function MainPage() {
   const status = useSelector((state) => state.categories.status);
 
   useEffect(() => {
+    setDocumentTitle("home")
     if (status === "idle") {
       dispatch(fetchCategories());
     }

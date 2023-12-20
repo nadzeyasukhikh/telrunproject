@@ -27,3 +27,4 @@ export const sortProducts = (products, sortValue) => {
 
     return sortedProducts;
 };
+

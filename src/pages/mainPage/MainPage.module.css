@@ -99,7 +99,7 @@ white-space: nowrap;
         margin: 0 20px 0 20px;
         display: grid;
         grid-template-columns: 1fr 1fr 1fr;
-        
+        gap: 15px;
     }
     .categoryCard{
         width: 225px;
@@ -152,6 +152,7 @@ white-space: nowrap;
 @media(max-width: 360px){
     .mainTitle{
         font-size: 52px;
+        width: 320px;
     }
     .categoriesBar{
         display: none;

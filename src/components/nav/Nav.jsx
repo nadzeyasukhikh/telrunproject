@@ -37,7 +37,7 @@ function Nav() {
       
         <button className={styles.btn} onClick={() => {navigate("/shoppingCart/:id")}}>
           <img className={styles.btnImg} src={backet} alt="Basket"/>
-          <div className={styles.count}><span>{isNaN(cartItemCount) ? 0 : cartItemCount}</span></div>
+          <div className={styles.count}><p className={styles.span}>{isNaN(cartItemCount) ? 0 : cartItemCount}</p></div>
         </button>
         {!menuOpen && <button className={styles.menuButton} onClick={toggleMenu}>☰</button>}
       </div>

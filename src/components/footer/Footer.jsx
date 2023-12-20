@@ -19,14 +19,14 @@ function Footer() {
           </div>
         </div>
         <div>
-          <div className={styles.infoText}>
+          <div className={`${styles.infoText} ${styles.infotextTwo}`}>
             <p className={styles.paragraphText}>Socials</p>
             <div className={styles.footerImg}>
               <img src={inst} alt="instagram" />
               <img src={whatsapp} alt="whatsapp" />
             </div>
           </div>
-          <div className={styles.infoText}>
+          <div className={`${styles.infoText} ${styles.infotextTwo}`}>
             <p className={styles.paragraphText}>Working Hours</p>
             <p className={styles.paragraphInfoInfo}>24 hours a day</p>
           </div>
