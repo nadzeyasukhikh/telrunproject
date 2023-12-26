@@ -54,7 +54,8 @@
 
 @media (max-width: 1000px) {
     .nav {
-        padding: 20px 30px;
+        padding: 20px 20px;
+        width: 968px;
     }
     .link {
         gap: 20px;
@@ -79,6 +80,9 @@
 @media (max-width: 768px) {
     .nav {
        padding: 10px 20px;
+       justify-content: space-between;
+       align-items: center;
+       width: 728px;
     }
     .link {
         gap: 15px;
@@ -87,12 +91,14 @@
         margin-top: 10px;
     }
     
+    
 }
 @media (max-width: 480px) {
     .nav {
         padding: 12px 30px;
         padding-right: 40px;
         align-items: center;
+        width: 440px;
      }
     .menuButton {
         display: block;
@@ -154,5 +160,10 @@
     }
     .linkstyle{
         margin-right: 10px;
+    }
+}
+@media (max-width: 360px){
+    .nav{
+        width: 360px;
     }
 }

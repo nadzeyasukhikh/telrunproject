@@ -82,6 +82,9 @@
     }
 }
 @media(max-width: 768px){
+    footer{
+        width: 728px;
+    }
     .title{
         font-size: 56px;
     }
@@ -93,6 +96,9 @@
     }
 }
 @media(max-width: 480px){
+    footer{
+        width: 440px;
+    }
     .title{
         font-size: 48px;
     }
@@ -125,5 +131,8 @@
     }
     .paragraphInfo{
         width: 280px;
+    }
+    footer{
+        width: 360px;
     }
 }

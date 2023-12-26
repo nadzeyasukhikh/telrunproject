@@ -10,6 +10,7 @@ import { addToCart } from "../../store/slices/productSlice";
 import { calculateDiscountPercent } from "../../utils/utils";
 import { sortProducts } from "../../utils/sortProducts";
 import { setDocumentTitle } from "../../utils/setDocumentTitle";
+import { fetchCategories } from "../../store/slices/categoriesSlice";
 
 function CategoryProducts() {
   const { categoryId } = useParams();
@@ -34,6 +35,7 @@ function CategoryProducts() {
 
   useEffect(() => {
     setDocumentTitle("categoriesProduct")
+    dispatch(fetchCategories());
     dispatch(fetchProductsByCategory(categoryId));
   }, [categoryId, dispatch]);
 
@@ -74,6 +76,7 @@ function CategoryProducts() {
       setFilteredProducts(filteredProducts);
     }
   }, [products, minPrice, maxPrice, showDiscounted, sorting]);
+  
 
   const handleSortingChange = (e) => {
     setSorting(e.target.value);

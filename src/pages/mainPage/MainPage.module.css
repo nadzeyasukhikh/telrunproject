@@ -94,6 +94,7 @@ white-space: nowrap;
         width: 225px;
         height: 250px;
     }
+    
     .swipperDiv{
         padding-top: 20px;
         margin: 0 20px 0 20px;
@@ -176,7 +177,7 @@ white-space: nowrap;
         height: 220px;
     }
     .categoryCard{
-        width: 220px;
+        width: 320px;
     }
     .swipperDiv{
         padding-bottom: 122px;

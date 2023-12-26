@@ -5,3 +5,13 @@
     color: #8B8B8B;
     cursor: pointer;
 }
+@media(max-width: 480px){
+    .mainPageBtn{
+        display: none;
+    }
+}
+@media(max-width: 360px){
+    .mainPageBtn{
+        display: none;
+    }
+}

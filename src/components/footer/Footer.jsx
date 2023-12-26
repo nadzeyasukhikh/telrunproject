@@ -3,7 +3,7 @@ import inst from "../../assets/images/ic-instagram.svg";
 import whatsapp from "../../assets/images/ic-whatsapp.svg";
 function Footer() {
   return (
-    <div>
+    <footer>
       <h2 className={styles.title}>Contact</h2>
       <div className={styles.divInfo}>
         <div>
@@ -41,7 +41,7 @@ function Footer() {
         title="tel-run"
       ></iframe>
       </div>
-    </div>
+    </footer>
   );
 }
 export default Footer;

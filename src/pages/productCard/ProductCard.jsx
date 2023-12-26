@@ -113,7 +113,7 @@ function ProductCard() {
               src={`http://localhost:3333${products.image}`}
               alt={products.title}
             />
-            <div>
+            <div className={styles.productCartInfoText}>
               <h3 className={styles.productTitle}>{products.title}</h3>
               <div className={styles.priceInfo}>
                 {products.discont_price ? (
@@ -166,7 +166,7 @@ function ProductCard() {
                   {isProductInCart(product.id) ? "Added" : "Add to Cart"}
                 </button>
               </div>
-              <div>
+              <div className={styles.descriptionDiv}>
                 <p className={styles.description}>Description</p>
                 <div style={divStyle}>
                   <p className={styles.cartText}>{fullText}</p>
