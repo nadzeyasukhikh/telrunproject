@@ -68,7 +68,7 @@ function FilledShoppingCart() {
                 alt={item.title}
                 onClick={() => handleProductClick(item.id)}
               />
-              <div>
+              <div className={styles.cartPlusMinusDiv}>
                 <div className={styles.titleDltBtn}>
                   <p className={styles.title}>{item.title}</p>
                   <button
@@ -94,6 +94,7 @@ function FilledShoppingCart() {
                       <img src={plus} alt="+" />
                     </button>
                   </div>
+                  <div className={styles.productPriceDiv}>
                   <p className={styles.productPrice}>
                     $
                     {item.discont_price
@@ -105,6 +106,7 @@ function FilledShoppingCart() {
                       ${(item.price * item.quantity).toFixed(2)}
                     </p>
                   )}
+                  </div>
                 </div>
               </div>
             </div>

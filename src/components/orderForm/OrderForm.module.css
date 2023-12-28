@@ -103,3 +103,35 @@
     font-size: 20px;
     font-weight: 600;
 }
+@media(max-width: 1000px){
+    .form{
+        width: 460px;
+    }
+    .form input {
+        width: 430px;
+    }
+    .orderBtn{
+        width: 430px;
+    }
+}
+@media(max-width: 360px){
+    .form{
+        width: 320px;
+    }
+    .form input {
+        width: 320px;
+    }
+    .orderBtn{
+        width: 320px;
+    }
+    .modalWindow{
+        width: 320px;
+        height: 315px;
+    }
+    .modalTitle{
+        font-size: 28px;
+    }
+    .modalText{
+        font-size: 18px;
+    }
+}

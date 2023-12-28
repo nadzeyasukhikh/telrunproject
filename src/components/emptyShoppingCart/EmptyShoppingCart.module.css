@@ -59,3 +59,73 @@ transition: 0.5s;
     background:  #282828;
     transition: 0.5s;
 }
+@media(max-width: 1000px){
+    .emptyText{
+        width: 470px;
+    }
+}
+@media(max-width: 768px){
+    .emptyDiv{
+        padding: 32px 20px;
+        width: 768px;
+    }
+    .emptyTitle{
+        font-size: 56px;
+    }
+    .titleBtn{
+        width: 720px;
+    }
+    .storeBtn{
+        width: 130px;
+        font-size: 12px;
+    }
+    .emptyText{
+        font-size: 20px;
+        width: 700px;
+    }
+}
+@media(max-width: 480px){
+    .emptyDiv{
+        position: relative;
+        width: 480px;
+    }
+    .emptyTitle{
+        font-size: 48px;
+    }
+    .titleBtnBar{
+        display: none;
+    }
+    .emptyText{
+        font-size: 18px;
+        width: 350px;
+    }
+    .storeBtn{
+        position: absolute;
+        top: 280px;
+    }
+    .titleBtn{
+        width: 400px;
+    }
+    .emptyBtn{
+        width: 180px;
+        font-size: 16px;
+        white-space: nowrap;
+        text-align: center;
+        padding: 12px ;
+    }
+}
+@media(max-width: 360px){
+    .emptyDiv{
+        width: 360px;
+    }
+    .emptyTitle{
+        font-size: 40px;
+    }
+    .emptyText{
+        font-size: 18px;
+        width: 300px;
+    }
+    .titleBtn{
+        width: 300px;
+    }
+}

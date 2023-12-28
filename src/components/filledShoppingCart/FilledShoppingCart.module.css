@@ -109,6 +109,9 @@
     border: 1px solid #DDD;
     cursor: pointer;
 }
+.productPriceDiv{
+    display: flex;
+}
 
 .span {
     padding: 0 38px;
@@ -173,4 +176,169 @@
     color: #282828;
     font-size: 64px;
     font-weight: 700;
+}
+@media(max-width: 1000px){
+    .filledShopping{
+        padding: 40px 20px;
+        width: 1000px;
+    }
+    .titleBtn{
+        width: 960px;
+    }
+    .flexDiv{
+        width: 960px;
+        gap: 20px;
+    }
+    .cartOrderDiv{
+        width: 480px;
+    }
+    .cartInfoDiv{
+        width: 480px;
+    }
+    .orderDiv{
+        width: 460px;
+    }
+    .cartPlusMinusDiv{
+        width: 200px;
+    }
+    .titleDltBtn{
+        width: 220px;
+    }
+}
+@media(max-width: 768px){
+    .filledShopping{
+        padding: 32px 20px;
+    }
+    .flexDiv{
+        display: block;
+        width: 730px;
+    }
+    .titleBtn{
+        width: 700px;
+    }
+    .cartTitle{
+        font-size: 56px;
+    }
+}
+@media(max-width: 480px){
+    .flexDiv{
+        position: relative;
+        width: 440px;
+    }
+    .titleBtnBar{
+        display: none;
+    }
+    .titleBtn{
+        width: 440px;
+    }
+    .cartTitle{
+        font-size: 48px;
+    }
+    .backToStoreBatn{
+        position: absolute;
+        z-index: 10;
+        bottom: -610px;
+    }
+    .cartInfoDiv{
+        width: 440px;
+        gap: 10px;
+    }
+    .cartPlusMinusDiv{
+        width: 180px;
+    }
+    .titleDltBtn{
+        width: 180px;
+    }
+    .priceBtnDiv{
+        display: block;
+    }
+    .btnSpan{
+        width: 146px;
+        height: 47px;
+    }
+    .plusMinusBtn{
+        padding: 10px;
+    }
+    .productPrice{
+        font-size: 26px;
+    }
+    .productPriceDiv{
+        display: flex;
+        width: 180px;
+        align-items: center;
+    }
+    .cartImg{
+        height: 209px;
+    }
+}
+@media(max-width: 360px){
+    .filledShopping{
+        width: 360px;
+    }
+    .flexDiv{
+        width: 320px;
+    }
+    .cartTitle{
+        font-size: 40px;
+    }
+    .titleBtn{
+        width: 300px;
+    }
+    .cartInfoDiv{
+        width: 320px;
+    }
+    .cartOrderDiv{
+        width: 320px;
+    }
+    .cartImg{
+        height: 209px;
+        width: 150px;
+    }
+    .titleDltBtn{
+        width: 150px;
+    }
+    .btnSpan{
+        
+        height: 40px;
+    }
+    .plusMinusBtn{
+        padding: 6px;
+    }
+    .span{
+        padding: 6px;
+    }
+    .productPrice{
+        font-size: 20px;
+        margin-left: 10px;
+    }
+    .productPriceDiv{
+        width: 140px;
+        align-items: center;
+    }
+    .productDiscPrise{
+        font-size: 16px;
+    }
+    .orderDiv{
+        width: 320;
+    }
+    .orderTitle{
+        font-size: 28px;
+        width: 300px;
+    }
+    .itemsCount{
+        width: 300px;
+        font-size: 28px;
+    }
+    .totalDiv{
+        width: 320px;
+    }
+    .totlalText{
+        font-size: 28px;
+    }
+    .totalPrice{
+        font-size: 48px;
+    }
+    .backToStoreBatn{
+        bottom: -540px;
+    }
 }
