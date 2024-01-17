@@ -83,6 +83,7 @@ white-space: nowrap;
     .mainTitle {
         font-size: 90px;
         padding: 60px 20px 0 20px;
+        width: 980px;
     }
     .mainBtn{
         margin: 40px 0 326px 20px;

@@ -37,6 +37,8 @@ function CategoryProducts() {
     setDocumentTitle("categoriesProduct")
     dispatch(fetchCategories());
     dispatch(fetchProductsByCategory(categoryId));
+
+    
   }, [categoryId, dispatch]);
 
   const handleAddToCart = (product) => {
@@ -62,6 +64,7 @@ function CategoryProducts() {
   };
 
   useEffect(() => {
+
     if (products?.data) {
       let filteredProducts = products.data.filter((product) => {
         const price = product.discont_price || product.price;
